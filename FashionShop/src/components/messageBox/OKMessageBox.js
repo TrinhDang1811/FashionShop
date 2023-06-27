@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         color: color.TitleActive,
-        fontFamily: FONT_FAMILY.Bold,
+        fontFamily: FONT_FAMILY.yesnoMess,
         fontSize: scale(24),
         alignSelf: 'center',    
     },

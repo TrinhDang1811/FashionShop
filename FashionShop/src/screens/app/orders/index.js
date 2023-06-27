@@ -208,7 +208,7 @@ const OrdersScreen = props => {
                         onPress={() => ReOrder(data.productDetails)}
                         title={'RE_ORDER'}
                       />
-                      <ButtonOrder onPress={null} title={'RATE'} />
+                      {/* <ButtonOrder onPress={null} title={'RATE'} /> */}
                     </View>
                   ) : chosen === 'cancel' ? (
                     <ButtonOrder
