@@ -7,8 +7,9 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
 import LinearGradient from 'react-native-linear-gradient';
+
+import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
 import scale from '../../../../../constants/responsive';
 import FONT_FAMILY from '../../../../../constants/fonts';
 import color from '../../../../../constants/color';

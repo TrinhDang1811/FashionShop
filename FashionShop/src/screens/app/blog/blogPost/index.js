@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import SwiperFlatList from 'react-native-swiper-flatlist';
+
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import scale from '../../../../constants/responsive';
 import FONT_FAMILY from '../../../../constants/fonts';

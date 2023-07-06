@@ -15,9 +15,9 @@ import Modal from 'react-native-modal';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Controller, useForm} from 'react-hook-form';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import {useDispatch, useSelector} from 'react-redux';
 
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import SaveButton from '../../../../components/buttons/Save';
 import Popup from './component/popup';
 import OKMessageBox from '../../../../components/messageBox/OKMessageBox';

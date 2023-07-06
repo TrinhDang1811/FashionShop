@@ -12,19 +12,16 @@ import {
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import {addToCart} from '../../../../redux/actions/cartActions';
 import AddToBasket from '../../../../components/buttons/AddToBasket';
-
 import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
 import ZoomImageView from './components/ZoomImageView';
 import Policy from './components/Policy';
-
 import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
 import Custom_Footer from '../../../../components/footer/Custom_Footer';
-
 import scale from '../../../../constants/responsive';
 import FONT_FAMILY from '../../../../constants/fonts';
 import color from '../../../../constants/color';

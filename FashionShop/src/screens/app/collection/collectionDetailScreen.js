@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
+
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import CollectionProduct from './components/collectionProducts';
 import SuggestiveCollection from './components/suggestiveCollections';

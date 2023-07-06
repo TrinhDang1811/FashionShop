@@ -14,7 +14,6 @@ import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {login} from '../../../features/auth/userSlice';
 import {initUser} from '../../../redux/actions/userActions';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import {initCartLogIn} from '../../../redux/actions/cartActions';
