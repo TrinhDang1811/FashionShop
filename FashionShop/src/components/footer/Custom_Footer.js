@@ -8,13 +8,11 @@ import {
   Alert,
 } from 'react-native';
 import React from 'react';
-import {IC_Twitter, IC_Instagram, IC_Youtube} from './icons';
-import {LineTop, LineBottom} from './images';
-import Color from '../../constants/color';
-import fontStyles from '../../constants/fontStyle';
 import scale from '../../constants/responsive';
 import FONT_FAMILY from '../../constants/fonts';
 import color from '../../constants/color';
+import {IC_Twitter, IC_Instagram, IC_Youtube} from './icons';
+import {LineTop, LineBottom} from './images';
 
 const url_Twitter = 'https://twitter.com/i/flow/login';
 const url_Instagram = 'https://www.instagram.com/?hl=en';

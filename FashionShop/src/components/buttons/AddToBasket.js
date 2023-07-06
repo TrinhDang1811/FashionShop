@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import color from '../../constants/color';
 import scale from '../../constants/responsive';
-import { IC_Plus} from '../../assets/icons';
+import {IC_Plus} from '../../assets/icons';
 import FONT_FAMILY from '../../constants/fonts';
 
 const AddToBasket = props => {

@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -8,22 +7,12 @@ import {
   Platform,
   UIManager,
   LayoutAnimation,
-  ScrollView,
-  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import scale from '../../../../../constants/responsive';
-import color from '../../../../../constants/color';
 import FONT_FAMILY from '../../../../../constants/fonts';
-import SaveButton from '../../../../../components/buttons/Save';
-import {
-  IC_Down,
-  IC_Up,
-  IC_Forward,
-  IC_Tag,
-  IC_Refresh,
-} from '../../../../../assets/icons';
-import {IC_Star} from '../../../../../components/products';
+import color from '../../../../../constants/color';
+import {IC_Up, IC_Tag, IC_Down} from '../../../../../assets/icons';
 
 if (
   Platform.OS === 'android' &&

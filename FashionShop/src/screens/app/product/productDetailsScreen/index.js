@@ -8,39 +8,29 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  Modal,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import Custom_Footer from '../../../../components/footer/Custom_Footer';
-import color from '../../../../constants/color';
-import AddToBasket from '../../../../components/buttons/AddToBasket';
-import {
-  IC_Export,
-  IC_DoNotBleach,
-  IC_DoNotTumbleDry,
-  IC_DoNotWash,
-  IC_Iron,
-  IC_Resize,
-} from '../../../../assets/icons';
-import {
-  IMG_ModelFour,
-  IMG_ModelOne,
-  IMG_ModelTwo,
-  IMG_ModelThree,
-} from '../../../../assets/images';
-import {LineBottom} from '../../../../components/footer/images';
-import scale from '../../../../constants/responsive';
-import SwiperFlatList from 'react-native-swiper-flatlist';
-import FONT_FAMILY from '../../../../constants/fonts';
-import fontStyles from '../../../../constants/fontStyle';
-import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
-import ZoomImageView from './components/ZoomImageView';
 import {useSelector} from 'react-redux';
-import {addToCart} from '../../../../redux/actions/cartActions';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import Policy from './components/Policy';
+import SwiperFlatList from 'react-native-swiper-flatlist';
+
+import {addToCart} from '../../../../redux/actions/cartActions';
+import AddToBasket from '../../../../components/buttons/AddToBasket';
+
 import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
+import ZoomImageView from './components/ZoomImageView';
+import Policy from './components/Policy';
+
+import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
+import Custom_Footer from '../../../../components/footer/Custom_Footer';
+
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import fontStyles from '../../../../constants/fontStyle';
+import {LineBottom} from '../../../../components/footer/images';
+import {IC_Resize} from '../../../../assets/icons';
 
 const ProductDetailsScreen = props => {
   const [visible, setVisible] = useState(true);
@@ -68,9 +58,8 @@ const ProductDetailsScreen = props => {
       }
     });
     console.log(selectedDetail);
-    if(selectedDetail===undefined)
-    {
-      setNotExistSize(true)
+    if (selectedDetail === undefined) {
+      setNotExistSize(true);
     }
     setDetailChoose(selectedDetail);
     dispatch(

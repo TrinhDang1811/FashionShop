@@ -7,12 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import FONT_FAMILY from '../../../constants/fonts';
-import scale from '../../../constants/responsive';
-import color from '../../../constants/color';
-import {IC_Close} from '../../../assets/icons';
-import Custom_Cart from '../../../components/cart/Custom_Cart';
-import Button from './components/button';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   removeFromCart,
@@ -20,7 +14,13 @@ import {
   order,
   orderAll,
 } from '../../../redux/actions/cartActions';
+import scale from '../../../constants/responsive';
+import FONT_FAMILY from '../../../constants/fonts';
+import Custom_Cart from '../../../components/cart/Custom_Cart';
+import Button from './components/button';
 import OKMessageBox from '../../../components/messageBox/OKMessageBox';
+import color from '../../../constants/color';
+import {IC_Close} from '../../../assets/icons';
 
 const CartScreen = props => {
   const dispatch = useDispatch();
@@ -95,7 +95,12 @@ const CartScreen = props => {
         onPress={() => props.navigation.goBack()}>
         <IC_Close />
       </TouchableOpacity>
-      <View style={{marginLeft: scale(16),marginTop: scale(7),flexDirection:'row'}}>
+      <View
+        style={{
+          marginLeft: scale(16),
+          marginTop: scale(7),
+          flexDirection: 'row',
+        }}>
         <Text style={styles.cartText}>CART</Text>
         {/* SELECT ALL */}
         {/* <TouchableOpacity
@@ -236,10 +241,11 @@ const CartScreen = props => {
       <Button
         text={checkOutCart.length !== 0 ? 'BUY NOW' : 'CONTINUE SHOPPING'}
         onPress={() =>
-          cartItems.length === 0 ? setNotExistCart(true) 
-          : (checkOutCart.length !== 0
+          cartItems.length === 0
+            ? setNotExistCart(true)
+            : checkOutCart.length !== 0
             ? props.navigation.navigate('CheckOutStackScreen')
-            : setNotExistOrder(true))
+            : setNotExistOrder(true)
         }
       />
     </SafeAreaView>
@@ -260,7 +266,7 @@ const styles = StyleSheet.create({
     color: color.TitleActive,
     lineHeight: scale(22),
     letterSpacing: scale(2),
-    marginRight:scale(160),
+    marginRight: scale(160),
   },
   selectAllText: {
     fontFamily: FONT_FAMILY.BoldSecond,
@@ -268,7 +274,7 @@ const styles = StyleSheet.create({
     color: color.TitleActive,
     lineHeight: scale(22),
     letterSpacing: scale(2),
-    marginLeft:scale(10),
+    marginLeft: scale(10),
   },
   viewScroll: {
     alignSelf: 'center',

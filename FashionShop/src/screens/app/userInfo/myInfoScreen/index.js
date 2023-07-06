@@ -8,22 +8,20 @@ import {
   ScrollView,
 } from 'react-native';
 import React from 'react';
+import {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
 
-// constants
-import color from '../../../../constants/color';
+import SaveButton from '../../../../components/buttons/Save';
 import scale from '../../../../constants/responsive';
 import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
 import {
   IC_BackwardArrow,
   IC_Address,
   IC_Phone,
   IC_Email,
 } from '../../../../assets/icons';
-
-import {useState, useEffect} from 'react';
-import SaveButton from '../../../../components/buttons/Save';
-import {useSelector} from 'react-redux';
-import {useIsFocused} from '@react-navigation/native';
 
 const MyInfoScreen = props => {
   const [showPassword, setShowPassword] = useState(false);

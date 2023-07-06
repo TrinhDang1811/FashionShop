@@ -1,12 +1,12 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import color from '../../../../constants/color';
 import scale from '../../../../constants/responsive';
 import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
 
-const ButtonOrder = (props) => {
+const ButtonOrder = props => {
   return (
-    <TouchableOpacity style={styles.button}  onPress={props.onPress}>
+    <TouchableOpacity style={styles.button} onPress={props.onPress}>
       <Text style={styles.text}>{props.title}</Text>
     </TouchableOpacity>
   );
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     height: scale(31),
     justifyContent: 'center',
     alignSelf: 'flex-end',
-    marginRight:scale(7)
+    marginRight: scale(7),
   },
   text: {
     paddingHorizontal: scale(3),

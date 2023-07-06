@@ -1,8 +1,8 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import scale from '../../constants/responsive';
 import Color from '../../constants/color';
 import FONT_FAMILY from '../../constants/fonts';
-import scale from '../../constants/responsive';
 
 const BackToHome = props => {
   return (
@@ -33,7 +33,7 @@ export default BackToHome;
 
 const styles = StyleSheet.create({
   view: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonView: {
     paddingHorizontal: scale(16),

@@ -9,14 +9,13 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import color from '../../../../constants/color';
-import scale from '../../../../constants/responsive';
-import FONT_FAMILY from '../../../../constants/fonts';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
-import Filter from '../../../../components/buttons/filter';
-import {IC_Delete, IC_Search} from '../../../../assets/icons';
 import Custom_Footer from '../../../../components/footer/Custom_Footer';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import {IC_Delete, IC_Search} from '../../../../assets/icons';
 
 const SearchDetailScreen = props => {
   const [searchResult, setSearchResult] = useState([]);

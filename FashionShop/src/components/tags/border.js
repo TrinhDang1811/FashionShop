@@ -1,21 +1,26 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {React, useState} from 'react';
+import scale from '../../constants/responsive';
 import FONT_FAMILY from '../../constants/fonts';
 import color from '../../constants/color';
-import scale from '../../constants/responsive';
 import {IC_Close} from '../../assets/icons';
-import {useState} from 'react';
 
 const Custom_Tag2 = props => {
   const [shouldShow, setShouldShow] = useState(true);
   return (
-    <TouchableOpacity style={{marginLeft:props.marginLeft||scale(0)}} onPress={props.onPress}>
+    <TouchableOpacity
+      style={{marginLeft: props.marginLeft || scale(0)}}
+      onPress={props.onPress}>
       {shouldShow ? (
         <View style={styles.border}>
           <Text style={styles.text}>{props.value}</Text>
-          {props.visible ? (<TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
-            <IC_Close viewBox={`-3 -3 30 30`}/>
-          </TouchableOpacity>):(<View/>)}
+          {props.visible ? (
+            <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
+              <IC_Close viewBox={`-3 -3 30 30`} />
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
         </View>
       ) : null}
     </TouchableOpacity>

@@ -1,12 +1,14 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
+import scale from '../../constants/responsive';
 import FONT_FAMILY from '../../constants/fonts';
 import Color from '../../constants/color';
-import scale from '../../constants/responsive';
 
-const Custom_Tag1 = (props) => {
+const Custom_Tag1 = props => {
   return (
-    <TouchableOpacity onPress={props.onPress} style={[styles.fill,{marginLeft:props.marginLeft||scale(0)}]}>
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={[styles.fill, {marginLeft: props.marginLeft || scale(0)}]}>
       <Text style={styles.text}>{props.value}</Text>
     </TouchableOpacity>
   );

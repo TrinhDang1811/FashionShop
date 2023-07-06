@@ -1,9 +1,9 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Color from '../../constants/color';
 import scale from '../../constants/responsive';
-import {IC_ShoppingBag} from '../../assets/icons';
+import Color from '../../constants/color';
 import FONT_FAMILY from '../../constants/fonts';
+import {IC_ShoppingBag} from '../../assets/icons';
 
 const CheckOut = props => {
   return (

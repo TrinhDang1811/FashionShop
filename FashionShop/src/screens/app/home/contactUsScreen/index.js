@@ -7,17 +7,16 @@ import {
   View,
   Image,
   ScrollView,
-  Icon,
 } from 'react-native';
 import React, {useState} from 'react';
-import Custom_Footer from '../../../../components/footer/Custom_Footer';
-import color from '../../../../constants/color';
-import FONT_FAMILY from '../../../../constants/fonts';
-import scale from '../../../../constants/responsive';
-import {LineBottom} from '../../../../components/footer/images';
-import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
-import {IC_ContactCall, IC_ContactText} from '../../../../assets/icons';
 import Clipboard from '@react-native-clipboard/clipboard';
+import Custom_Footer from '../../../../components/footer/Custom_Footer';
+import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import {LineBottom} from '../../../../components/footer/images';
+import {IC_ContactCall, IC_ContactText} from '../../../../assets/icons';
 
 const ContactUsScreen = props => {
   const [chooseButton, setChooseButton] = useState('call');

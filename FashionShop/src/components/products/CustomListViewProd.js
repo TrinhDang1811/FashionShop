@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import scale from '../../constants/responsive';
-import {IMG_ModelTwo} from '../../assets/images/index';
 import FONT_FAMILY from '../../constants/fonts';
 import Color from '../../constants/color';
+import {IMG_ModelTwo} from '../../assets/images/index';
 import {IC_Star} from './index';
 
 const Custom_ListViewProd = props => {

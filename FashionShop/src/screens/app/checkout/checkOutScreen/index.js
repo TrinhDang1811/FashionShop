@@ -13,26 +13,20 @@ import {
   Linking,
   Alert,
 } from 'react-native';
-import React, {useState, useEffect, useCallback} from 'react';
-import color from '../../../../constants/color';
-import FONT_FAMILY from '../../../../constants/fonts';
-import scale from '../../../../constants/responsive';
-import {LineBottom} from '../../../../components/footer/images';
-import SaveButton from '../../../../components/buttons/Save';
-import {
-  IC_Down,
-  IC_Forward,
-  IC_Location,
-  IC_Plus,
-} from '../../../../assets/icons';
+import React, {useState, useEffect} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {useForm, Controller} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetCart, resetCartOrder} from '../../../../redux/actions/cartActions';
+import {resetCartOrder} from '../../../../redux/actions/cartActions';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import Custom_CheckOutCart from './components/Custom_CheckOutCart';
 import {useIsFocused} from '@react-navigation/native';
 import {initAddress} from '../../../../redux/actions/addressActions';
+import Custom_CheckOutCart from './components/Custom_CheckOutCart';
+import scale from '../../../../constants/responsive';
+import color from '../../../../constants/color';
+import FONT_FAMILY from '../../../../constants/fonts';
+import {LineBottom} from '../../../../components/footer/images';
+import {IC_Forward, IC_Location, IC_Plus} from '../../../../assets/icons';
 
 const CheckOut = props => {
   const user = useSelector(state => state.user);

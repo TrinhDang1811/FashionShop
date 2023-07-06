@@ -1,12 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  LogBox,
-} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import React from 'react';
 import scale from '../../../../../constants/responsive';
 import FONT_FAMILY from '../../../../../constants/fonts';
 import Color from '../../../../../constants/color';

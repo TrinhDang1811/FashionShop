@@ -9,6 +9,18 @@ import {
   Linking,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import Clipboard from '@react-native-clipboard/clipboard';
+import useLogout from '../../../hooks/useLogout';
+import {useDispatch, useSelector} from 'react-redux';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import {resetCartWhenLogOut} from '../../../redux/actions/cartActions';
+import {resetUserWhenLogOut} from '../../../redux/actions/userActions';
+import {resetAddressWhenLogOut} from '../../../redux/actions/addressActions';
+import OKMessageBox from '../../../components/messageBox/OKMessageBox';
+import Custom_MenuFooter from './components/Custom_MenuFooter';
+import Custom_UnderlineButtonMenu from './components/Custom_UnderlineButtonMenu';
+import scale from '../../../constants/responsive';
+import FONT_FAMILY from '../../../constants/fonts';
 import color from '../../../constants/color';
 import {
   IC_Call,
@@ -19,18 +31,7 @@ import {
   IC_Forward,
   IC_MyOrder,
 } from '../../../assets/icons';
-import FONT_FAMILY from '../../../constants/fonts';
-import scale from '../../../constants/responsive';
-import Custom_MenuFooter from './components/Custom_MenuFooter';
-import OKMessageBox from '../../../components/messageBox/OKMessageBox';
-import useLogout from '../../../hooks/useLogout';
-import {useDispatch, useSelector} from 'react-redux';
-import {resetCartWhenLogOut} from '../../../redux/actions/cartActions';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import Custom_UnderlineButtonMenu from './components/Custom_UnderlineButtonMenu';
-import Clipboard from '@react-native-clipboard/clipboard';
-import {resetUserWhenLogOut} from '../../../redux/actions/userActions';
-import {resetAddressWhenLogOut} from '../../../redux/actions/addressActions';
+
 const Menu = props => {
   const [category, setCategory] = useState([]);
   const [data, setData] = useState([]);
