@@ -154,8 +154,9 @@ const HomeScreen = props => {
                   prodName={item.name}
                   prodPrice={item.price}
                   onPress={() =>
-                    props.navigation.navigate('ProductDetailsScreen', {
-                      data: item,
+                    props.navigation.navigate('ProductStackScreen', {
+                      screen: 'ProductDetailsScreen',
+                      params: {data: item},
                     })
                   }
                 />
@@ -192,8 +193,9 @@ const HomeScreen = props => {
                   prodName={item.name}
                   prodPrice={item.price}
                   onPress={() =>
-                    props.navigation.navigate('ProductDetailsScreen', {
-                      data: item,
+                    props.navigation.navigate('ProductStackScreen', {
+                      screen: 'ProductDetailsScreen',
+                      params: {data: item},
                     })
                   }
                 />

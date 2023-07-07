@@ -38,7 +38,6 @@ const Menu = props => {
   const cart = useSelector(state => state.cart);
   const {cartItems} = cart;
   const {cartId} = cart;
-  console.log(cartId);
   const locationUrl =
     'https://www.google.com/maps/search/UIT/@10.824217,106.7037515,13z/data=!3m1!4b1?hl=vi-VN';
   const openUrl = async url => {

@@ -118,6 +118,7 @@ const EditMyInfoScreen = props => {
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       const result = await launchCamera(options);
       setImage(result.assets[0].uri);
+      console.log({image})
       setVisibleAvatar(false);
     }
   };
@@ -194,7 +195,7 @@ const EditMyInfoScreen = props => {
           <TouchableOpacity
             style={styles.avatar}
             onPress={() => setVisibleAvatar(true)}>
-            <Avatar.Image source={{uri: oldUserInfo.avatarImage}} size={150} />
+            <Avatar.Image source={{uri: image}} size={150} />
           </TouchableOpacity>
         </View>
         <View style={styles.body}>

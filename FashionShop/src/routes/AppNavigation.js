@@ -11,12 +11,12 @@ import {HomeStackScreen} from '../screens/app/home/HomeNavigation';
 import Menu from '../screens/app/menu';
 import CategoryGridViewAllScreen from '../screens/app/product/categoryGridView/CategoryGridViewAllScreen';
 import CategoryGridViewByIdScreen from '../screens/app/product/categoryGridView/CategoryGridViewByIdScreen';
-import ProductDetailsScreen from '../screens/app/product/productDetailsScreen';
+import { ProductStackScreen } from '../screens/app/product/productDetailsScreen/productScreenNavigation';
 import SearchDetailScreen from '../screens/app/search/searchDetailScreen/searchDetailScreen';
+import ProductReviewScreen from '../screens/app/rating/productReviewScreen';
 import OTPScreen from '../screens/auth/otpScreen';
 import {useDispatch, useSelector} from 'react-redux';
 import {MyInfoStackScreen} from '../screens/app/userInfo/myInfoNavigation';
-import {initCartLogIn} from '../redux/actions/cartActions';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import OrdersScreen from '../screens/app/orders';
 
@@ -47,6 +47,13 @@ const AppStackWithVerifyScreen = () => {
       <AppStackWithVerify.Screen
         name="CheckOutStackScreen"
         component={CheckOutStackScreen}
+        options={({navigation}) => ({
+          headerTitle: () => <Custom_Header navigation={navigation} />,
+        })}
+      />
+      <AppStackWithVerify.Screen
+        name="ProductReviewScreen"
+        component={ProductReviewScreen}
         options={({navigation}) => ({
           headerTitle: () => <Custom_Header navigation={navigation} />,
         })}
@@ -98,8 +105,8 @@ const AppStackWithVerifyScreen = () => {
         })}
       />
       <AppStackWithVerify.Screen
-        name="ProductDetailsScreen"
-        component={ProductDetailsScreen}
+        name="ProductStackScreen"
+        component={ProductStackScreen}
         options={({navigation}) => ({
           headerTitle: () => <Custom_Header navigation={navigation} />,
         })}

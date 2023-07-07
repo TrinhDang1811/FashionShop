@@ -77,8 +77,9 @@ const CollectionDetailScreen = (props) => {
                 image={item.posterImage.url}
                 prodName={item.name}
                 prodPrice={item.price}
-                onPress={() => props.navigation.replace('ProductDetailsScreen', {
-                  data: item,
+                onPress={() => props.navigation.navigate('ProductStackScreen', {
+                  screen: 'ProductDetailsScreen',
+                  params: {data: item},
                 })}
                 />
               )}

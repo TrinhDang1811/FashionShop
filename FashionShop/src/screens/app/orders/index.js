@@ -88,7 +88,7 @@ const OrdersScreen = props => {
   const filters = orders => {
     const newData = orders.filter(x => x.orderStatus === chosen);
     setFilteredOrders([...newData.reverse()]);
-    console.log({filteredOrders});
+    // console.log({filteredOrders});
     return filteredOrders;
   };
 
@@ -163,20 +163,28 @@ const OrdersScreen = props => {
                 </View>
                 <View style={{marginTop: scale(10)}}>
                   {data.productDetails.map(item => (
-                    <PriceAttribute
-                      onPress={() => {
-                        props.navigation.navigate('ProductDetailsScreen', {
-                          data: item.productDetailId.productId,
-                        });
-                      }}
-                      key={item._id}
-                      image={item.productDetailId.productId.posterImage.url}
-                      qty={item.quantity}
-                      name={item.productDetailId.productId.name}
-                      price={item.productDetailId.productId.price}
-                      sizeName={item.productDetailId.sizeId.name}
-                      colorCode={item.productDetailId.colorId.code}
-                    />
+                      <PriceAttribute
+                        onPress={() => {
+                          props.navigation.navigate('ProductStackScreen', {
+                            screen: 'ProductDetailsScreen',
+                            params: {data: item.productDetailId.productId},
+                          })
+                        }}
+                        ratingData={chosen === 'complete' ? item : null}
+                        isRated={item.rated}
+                        onPressRating={() => {
+                          props.navigation.navigate('ProductReviewScreen', {
+                            data: {orderId: data._id, detail: item},
+                          });
+                        }}
+                        key={item._id}
+                        image={item.productDetailId.productId.posterImage.url}
+                        qty={item.quantity}
+                        name={item.productDetailId.productId.name}
+                        price={item.productDetailId.productId.price}
+                        sizeName={item.productDetailId.sizeId.name}
+                        colorCode={item.productDetailId.colorId.code}
+                      />
                   ))}
                 </View>
 
@@ -199,17 +207,10 @@ const OrdersScreen = props => {
                       title={'CANCEL'}
                     />
                   ) : chosen === 'complete' ? (
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        paddingHorizontal: scale(7),
-                      }}>
                       <ButtonOrder
                         onPress={() => ReOrder(data.productDetails)}
                         title={'RE_ORDER'}
                       />
-                      {/* <ButtonOrder onPress={null} title={'RATE'} /> */}
-                    </View>
                   ) : chosen === 'cancel' ? (
                     <ButtonOrder
                       onPress={() => ReOrder(data.productDetails)}

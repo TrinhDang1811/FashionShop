@@ -131,8 +131,9 @@ const CartScreen = props => {
                 <View key={item.detailId}>
                   <Custom_Cart
                     onPress={() =>
-                      props.navigation.navigate('ProductDetailsScreen', {
-                        data: item.product,
+                      props.navigation.navigate('ProductStackScreen', {
+                        screen: 'ProductDetailsScreen',
+                        params: {data: item.product},
                       })
                     }
                     id={item.detailId}

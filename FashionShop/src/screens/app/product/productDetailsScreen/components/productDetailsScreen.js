@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import Custom_Footer from '../../../../components/footer/Custom_Footer';
-import color from '../../../../constants/color';
-import AddToBasket from '../../../../components/buttons/AddToBasket';
+import Custom_Footer from '../../../../../components/footer/Custom_Footer';
+import color from '../../../../../constants/color';
+import AddToBasket from '../../../../../components/buttons/AddToBasket';
 import {
   IC_Export,
   IC_DoNotBleach,
@@ -22,25 +22,30 @@ import {
   IC_DoNotWash,
   IC_Iron,
   IC_Resize,
-} from '../../../../assets/icons';
+  IC_UnSatisfy,
+  IC_Normal,
+  IC_Satisfy,
+  IC_BackwardArrow,
+  IC_ForwardArrow,
+} from '../../../../../assets/icons';
 import {
   IMG_ModelFour,
   IMG_ModelOne,
   IMG_ModelTwo,
   IMG_ModelThree,
-} from '../../../../assets/images';
-import {LineBottom} from '../../../../components/footer/images';
-import scale from '../../../../constants/responsive';
+} from '../../../../../assets/images';
+import {LineBottom} from '../../../../../components/footer/images';
+import scale from '../../../../../constants/responsive';
 import SwiperFlatList from 'react-native-swiper-flatlist';
-import FONT_FAMILY from '../../../../constants/fonts';
-import fontStyles from '../../../../constants/fontStyle';
-import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
-import ZoomImageView from './components/ZoomImageView';
+import FONT_FAMILY from '../../../../../constants/fonts';
+import fontStyles from '../../../../../constants/fontStyle';
+import Custom_GridViewProd from '../../../../../components/products/CustomGridViewProd';
+import ZoomImageView from './ZoomImageView';
 import {useSelector} from 'react-redux';
-import {addToCart} from '../../../../redux/actions/cartActions';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import Policy from './components/Policy';
-import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
+import {addToCart} from '../../../../../redux/actions/cartActions';
+import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
+import Policy from './Policy';
+import OKMessageBox from '../../../../../components/messageBox/OKMessageBox';
 
 const ProductDetailsScreen = props => {
   const [visible, setVisible] = useState(true);
@@ -51,6 +56,8 @@ const ProductDetailsScreen = props => {
   const [productImages, setProductImages] = useState([]);
   const [details, setDetails] = useState([]);
   const [suggestiveProduct, setSuggestiveProduct] = useState([]);
+  const [rating, setRating] = useState([]);
+  const [average, setAverage] = useState(0);
   const axiosPrivate = useAxiosPrivate();
 
   const [availableColor, setAvailableColor] = useState([]);
@@ -67,7 +74,6 @@ const ProductDetailsScreen = props => {
         return item;
       }
     });
-    console.log(selectedDetail);
     if(selectedDetail===undefined)
     {
       setNotExistSize(true)
@@ -125,22 +131,6 @@ const ProductDetailsScreen = props => {
             });
             setAvailableColor([...newColorArray]);
           }
-          // setChooseColor(availableColor[0].colorId);
-          // console.log(colorChoose);
-          // const selectedDetails = details.filter(
-          //   item => item.colorId === colorChoose,
-          // );
-          // let newSizeArray = [];
-          // selectedDetails.map(detail => {
-          //   newSizeArray.push({
-          //     sizeId: detail.sizeId,
-          //     sizeName: detail.sizeName,
-          //   });
-          // });
-          // setAvailableSize([...newSizeArray]);
-          // setChooseSize(availableSize[0].sizeId);
-          // console.log({availableColor});
-          // console.log({availableSize});
         });
       } catch (err) {
         console.log(err.response.data);
@@ -159,8 +149,31 @@ const ProductDetailsScreen = props => {
         console.log(err.response.data);
       }
     };
+    const getRating = async id => {
+      try {
+        const response = await axiosPrivate.get(
+          `/get-rating-by-productId/${id}`,
+          {
+            signal: controller.signal,
+          },
+        );
+        setRating(response?.data);
+        let averageRating = 0;
+        response?.data.map((rate) => 
+          averageRating = averageRating + parseInt(rate.rate)
+        )
+        averageRating /= response?.data.length;
+        averageRating = Math.round(averageRating)
+        console.log(averageRating)
+        setAverage(averageRating)    
+      } catch (err) {
+        console.log(err.response.data);
+      }
+    };
+    getRating(data._id);
     getSuggestiveProduct(4);
     getDetailsById(data._id);
+    
     return () => {
       controller.abort();
     };
@@ -234,10 +247,10 @@ const ProductDetailsScreen = props => {
         {/* Product Variation */}
         <View style={styles.productVariationContainer}>
           <View style={styles.nameView}>
-            <Text style={[styles.prodName]}>{data.name}</Text>
+            <Text style={styles.prodName}>{data.name}</Text>
           </View>
           <View style={styles.descriptionView}>
-            <Text style={[styles.prodDescription]}>{data.description}</Text>
+            <Text style={styles.prodDescription}>{data.description}</Text>
           </View>
           <Text style={styles.prodPrice}>${data.price}</Text>
           <>
@@ -358,9 +371,24 @@ const ProductDetailsScreen = props => {
           <Text style={[fontStyles.bodyMediumFont, styles.subTitle]}>
             {data.care}
           </Text>
-          <Text style={[fontStyles.subTitle16pxFont, styles.title]}>CARE</Text>
-
+          <Text style={[fontStyles.subTitle16pxFont, styles.title]}>POLICY</Text>
           <Policy />
+          <Text style={[fontStyles.subTitle16pxFont, styles.title]}>RATING</Text>
+          <View style={{flexDirection:'row', justifyContent:'space-between',
+           marginTop: scale(20), marginLeft: scale(20), alignItems:'center'}}>
+            <IC_UnSatisfy border={average === 1 ? color.Primary:'#E0CFBA'}/>
+            <IC_Normal border={average === 2 ? color.Primary:'#E0CFBA'}/>
+            <IC_Satisfy border={average === 3 ? color.Primary:'#E0CFBA'}/>
+            <TouchableOpacity style={{width:scale(180),height:scale(50), alignItems:'center',
+            justifyContent:'center',flexDirection:'row'}}
+            onPress={() => props.navigation.navigate('ProductStackScreen', {
+              screen: 'ProductRatingScreen',
+              params: {data: rating},
+            })}>
+              <Text style={styles.seeMoreText}>See all ratings</Text>
+              <IC_ForwardArrow/>
+            </TouchableOpacity>
+          </View>
         </View>
         {/* You May Also Like */}
         <View style={styles.likeProductContainer}>
@@ -387,8 +415,9 @@ const ProductDetailsScreen = props => {
                 prodName={item.name}
                 prodPrice={item.price}
                 onPress={() =>
-                  props.navigation.replace('ProductDetailsScreen', {
-                    data: item,
+                  props.navigation.navigate('ProductStackScreen', {
+                    screen: 'ProductDetailsScreen',
+                    params: {data: item},
                   })
                 }
               />
@@ -487,6 +516,12 @@ const styles = StyleSheet.create({
     marginTop: scale(10),
   },
   prodName: {
+    color: color.TitleActive,
+    fontFamily: FONT_FAMILY.Regular,
+    lineHeight: scale(18),
+    fontSize: scale(18),
+  },
+  seeMoreText: {
     color: color.TitleActive,
     fontFamily: FONT_FAMILY.Regular,
     lineHeight: scale(18),

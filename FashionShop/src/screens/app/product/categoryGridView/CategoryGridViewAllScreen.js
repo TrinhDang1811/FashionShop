@@ -77,8 +77,9 @@ import {
         image={item.posterImage.url}
         prodName={item.name}
         prodPrice={item.price}
-        onPress={() => props.navigation.navigate('ProductDetailsScreen', {
-          data: item,
+        onPress={() => props.navigation.navigate('ProductStackScreen', {
+          screen: 'ProductDetailsScreen',
+          params: {data: item},
         })}
         />
       );

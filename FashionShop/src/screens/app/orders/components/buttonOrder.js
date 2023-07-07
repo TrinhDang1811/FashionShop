@@ -6,7 +6,8 @@ import FONT_FAMILY from '../../../../constants/fonts';
 
 const ButtonOrder = (props) => {
   return (
-    <TouchableOpacity style={styles.button}  onPress={props.onPress}>
+    <TouchableOpacity style={(props.isRated===false || props.isRated===undefined)?styles.button:styles.buttonDisable}
+      onPress={props.onPress}>
       <Text style={styles.text}>{props.title}</Text>
     </TouchableOpacity>
   );
@@ -17,6 +18,15 @@ export default ButtonOrder;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: color.TitleActive,
+    borderRadius: 4,
+    width: scale(112),
+    height: scale(31),
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+    marginRight:scale(7)
+  },
+  buttonDisable: {
+    backgroundColor: color.GraySolid,
     borderRadius: 4,
     width: scale(112),
     height: scale(31),

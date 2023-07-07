@@ -50,5 +50,6 @@ export {default as IC_Success} from './IC_Success';
 export {default as IC_Rating} from './IC_Rating';
 export {default as IC_Satisfy} from './IC_Satisfy';
 export {default as IC_Normal} from './IC_Normal';
-export {default as IC_Unsatisfy} from './IC_Unsatisfy';
+export {default as IC_UnSatisfy} from './IC_UnSatisfy';
 export {default as IC_MyOrder} from './IC_MyOrder';
+export {default as IC_Camera} from './IC_Camera';

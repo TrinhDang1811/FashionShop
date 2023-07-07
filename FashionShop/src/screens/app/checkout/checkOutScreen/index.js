@@ -183,7 +183,7 @@ const CheckOut = props => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <ScrollView>
         <View style={styles.introTextBox}>
           <Text style={styles.introText}>CHECKOUT</Text>
           <Image source={LineBottom} />
@@ -353,7 +353,7 @@ const CheckOut = props => {
           </ScrollView>
         </View>
         <View />
-      </View>
+      </ScrollView>
       <View style={styles.totalBorder}>
         <Text style={styles.total}>TOTAL</Text>
         <Text style={styles.price}>${totalAmount + methodValue}</Text>

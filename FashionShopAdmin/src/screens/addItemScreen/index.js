@@ -245,6 +245,7 @@ const AddItemScreen = props => {
       .then(result => {
         switch (result) {
           case RESULTS.UNAVAILABLE:
+            requestPermission();
             console.log(
               'This feature is not available (on this device / in this context)',
             );

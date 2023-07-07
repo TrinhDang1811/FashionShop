@@ -117,6 +117,7 @@ const OrderSuccess = props => {
               <View key={item.detailId} style={{marginBottom: scale(10)}}>
                 <PriceAttribute
                   key={item.detailId}
+                  ratingData={null}
                   image={item.product.posterImage.url}
                   qty={item.qty}
                   name={item.product.name}
