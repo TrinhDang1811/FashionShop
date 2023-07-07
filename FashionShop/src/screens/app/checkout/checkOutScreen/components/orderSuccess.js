@@ -8,15 +8,16 @@ import {
   ScrollView,
 } from 'react-native';
 import {React, useState} from 'react';
-import color from '../../../../../constants/color';
-import FONT_FAMILY from '../../../../../constants/fonts';
-import scale from '../../../../../constants/responsive';
-import {LineBottom} from '../../../../../components/footer/images';
-import {IC_Success} from '../../../../../assets/icons';
+
 import PriceAttribute from '../../../orders/components/priceAttribute';
 import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
 import YesNoMessageBox from '../../../../../components/messageBox/YesNoMessageBox';
 import OKMessageBox from '../../../../../components/messageBox/OKMessageBox';
+import scale from '../../../../../constants/responsive';
+import FONT_FAMILY from '../../../../../constants/fonts';
+import color from '../../../../../constants/color';
+import {LineBottom} from '../../../../../components/footer/images';
+import {IC_Success} from '../../../../../assets/icons';
 
 const OrderSuccess = props => {
   const {data} = props.route.params;
@@ -31,13 +32,13 @@ const OrderSuccess = props => {
       const response = await axiosPrivate.put(`/cancel-order/${id}`);
       console.log('cancelOrder', JSON.stringify(response.data));
       setCancelSuccess(true);
-      setTitle('CANCELED')
-      setMessage('Your order was canceled!')
+      setTitle('CANCELED');
+      setMessage('Your order was canceled!');
     } catch (error) {
       console.log(error.response?.data);
-      setVisible(true)
-      setTitle('Error')
-      setMessage(err.response.data.error)
+      setVisible(true);
+      setTitle('Error');
+      setMessage(err.response.data.error);
     }
   };
 
@@ -45,7 +46,11 @@ const OrderSuccess = props => {
     <SafeAreaView style={styles.container}>
       <OKMessageBox
         visible={cancelSuccess}
-        clickCancel={() => title === 'Error' ? setCancelSuccess(false):props.navigation.navigate('HomeScreen')}
+        clickCancel={() =>
+          title === 'Error'
+            ? setCancelSuccess(false)
+            : props.navigation.navigate('HomeScreen')
+        }
         title={title}
         message={message}
       />

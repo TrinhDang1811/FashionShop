@@ -1,9 +1,9 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Color from '../../constants/color';
-import {IC_BackwardArrow} from '../../assets/icons';
 import scale from '../../constants/responsive';
+import Color from '../../constants/color';
 import FONT_FAMILY from '../../constants/fonts';
+import {IC_BackwardArrow} from '../../assets/icons';
 
 const HomePageLeft = props => {
   return (

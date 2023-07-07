@@ -8,22 +8,21 @@ import {
   TextInput,
 } from 'react-native';
 import {React, useEffect, useState} from 'react';
-import color from '../../../../constants/color';
-import FONT_FAMILY from '../../../../constants/fonts';
-import scale from '../../../../constants/responsive';
-import {IMG_Logo} from '../../../../assets/images';
-import SaveButton from '../../../../components/buttons/Save';
-import {LineBottom} from '../../../../components/footer/images';
 import * as yup from 'yup';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useDispatch, useSelector} from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import axios from 'axios';
+
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
 import YesNoMessageBox from '../../../../components/messageBox/YesNoMessageBox';
 import {editAddress} from '../../../../redux/actions/addressActions';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import {LineBottom} from '../../../../components/footer/images';
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -126,13 +125,13 @@ const EditAddressScreen = props => {
       );
       console.log('success', JSON.stringify(response.data));
       setVisibleChanged(true);
-      setTitle('EDIT SUCCESSFULLY ADDRESS')
-      setMessage('You edited successfully address!')
+      setTitle('EDIT SUCCESSFULLY ADDRESS');
+      setMessage('You edited successfully address!');
     } catch (error) {
       console.log('error', error);
-      setVisibleChanged(true)
-      setTitle('Error')
-      setMessage(err.response.data.error)
+      setVisibleChanged(true);
+      setTitle('Error');
+      setMessage(err.response.data.error);
     }
   };
   const handleCityChange = async city => {
@@ -182,7 +181,9 @@ const EditAddressScreen = props => {
       <OKMessageBox
         visible={visibleChanged}
         clickCancel={() => {
-          title === 'Error' ? setVisibleChanged(false):props.navigation.navigate('CheckOutScreen');
+          title === 'Error'
+            ? setVisibleChanged(false)
+            : props.navigation.navigate('CheckOutScreen');
         }}
         title={title}
         message={message}

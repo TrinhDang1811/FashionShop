@@ -8,44 +8,26 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  Modal,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import Custom_Footer from '../../../../../components/footer/Custom_Footer';
-import color from '../../../../../constants/color';
-import AddToBasket from '../../../../../components/buttons/AddToBasket';
-import {
-  IC_Export,
-  IC_DoNotBleach,
-  IC_DoNotTumbleDry,
-  IC_DoNotWash,
-  IC_Iron,
-  IC_Resize,
-  IC_UnSatisfy,
-  IC_Normal,
-  IC_Satisfy,
-  IC_BackwardArrow,
-  IC_ForwardArrow,
-} from '../../../../../assets/icons';
-import {
-  IMG_ModelFour,
-  IMG_ModelOne,
-  IMG_ModelTwo,
-  IMG_ModelThree,
-} from '../../../../../assets/images';
-import {LineBottom} from '../../../../../components/footer/images';
-import scale from '../../../../../constants/responsive';
-import SwiperFlatList from 'react-native-swiper-flatlist';
-import FONT_FAMILY from '../../../../../constants/fonts';
-import fontStyles from '../../../../../constants/fontStyle';
-import Custom_GridViewProd from '../../../../../components/products/CustomGridViewProd';
-import ZoomImageView from './ZoomImageView';
 import {useSelector} from 'react-redux';
-import {addToCart} from '../../../../../redux/actions/cartActions';
+import SwiperFlatList from 'react-native-swiper-flatlist';
+
 import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
-import Policy from './Policy';
+import { addToCart } from '../../../../../redux/actions/cartActions';
+import AddToBasket from '../../../../../components/buttons/AddToBasket';
 import OKMessageBox from '../../../../../components/messageBox/OKMessageBox';
+import ZoomImageView from './ZoomImageView';
+import Policy from './Policy';
+import Custom_GridViewProd from '../../../../../components/products/CustomGridViewProd';
+import Custom_Footer from '../../../../../components/footer/Custom_Footer';
+import scale from '../../../../../constants/responsive';
+import FONT_FAMILY from '../../../../../constants/fonts';
+import color from '../../../../../constants/color';
+import fontStyles from '../../../../../constants/fontStyle';
+import { LineBottom } from '../../../../../components/footer/images';
+import { IC_ForwardArrow, IC_Normal, IC_Resize, IC_Satisfy, IC_UnSatisfy } from '../../../../../assets/icons';
 
 const ProductDetailsScreen = props => {
   const [visible, setVisible] = useState(true);
@@ -374,21 +356,24 @@ const ProductDetailsScreen = props => {
           <Text style={[fontStyles.subTitle16pxFont, styles.title]}>POLICY</Text>
           <Policy />
           <Text style={[fontStyles.subTitle16pxFont, styles.title]}>RATING</Text>
-          <View style={{flexDirection:'row', justifyContent:'space-between',
-           marginTop: scale(20), marginLeft: scale(20), alignItems:'center'}}>
-            <IC_UnSatisfy border={average === 1 ? color.Primary:'#E0CFBA'}/>
-            <IC_Normal border={average === 2 ? color.Primary:'#E0CFBA'}/>
-            <IC_Satisfy border={average === 3 ? color.Primary:'#E0CFBA'}/>
-            <TouchableOpacity style={{width:scale(180),height:scale(50), alignItems:'center',
-            justifyContent:'center',flexDirection:'row'}}
-            onPress={() => props.navigation.navigate('ProductStackScreen', {
-              screen: 'ProductRatingScreen',
-              params: {data: rating},
-            })}>
-              <Text style={styles.seeMoreText}>See all ratings</Text>
-              <IC_ForwardArrow/>
-            </TouchableOpacity>
-          </View>
+          {rating.length === 0 ? (
+          <Text style={styles.noRatingText}>No rating yet!</Text>):(
+            <View style={{flexDirection:'row', justifyContent:'space-between',
+            marginTop: scale(20), marginLeft: scale(20), alignItems:'center'}}>
+              <IC_UnSatisfy border={average === 1 ? color.Primary:'#E0CFBA'}/>
+              <IC_Normal border={average === 2 ? color.Primary:'#E0CFBA'}/>
+              <IC_Satisfy border={average === 3 ? color.Primary:'#E0CFBA'}/>
+              <TouchableOpacity style={{width:scale(180),height:scale(50), alignItems:'center',
+              justifyContent:'center',flexDirection:'row'}}
+              onPress={() => props.navigation.navigate('ProductStackScreen', {
+                screen: 'ProductRatingScreen',
+                params: {data: rating},
+              })}>
+                <Text style={styles.seeMoreText}>See all ratings</Text>
+                <IC_ForwardArrow/>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
         {/* You May Also Like */}
         <View style={styles.likeProductContainer}>
@@ -524,6 +509,14 @@ const styles = StyleSheet.create({
   seeMoreText: {
     color: color.TitleActive,
     fontFamily: FONT_FAMILY.Regular,
+    lineHeight: scale(18),
+    fontSize: scale(18),
+  },
+  noRatingText: {
+    color: color.TitleActive,
+    fontFamily: FONT_FAMILY.Regular,
+    marginTop:scale(20),
+    marginLeft:scale(20),
     lineHeight: scale(18),
     fontSize: scale(18),
   },

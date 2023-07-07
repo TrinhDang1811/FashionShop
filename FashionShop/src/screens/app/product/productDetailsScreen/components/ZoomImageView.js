@@ -7,11 +7,10 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
-import {IMG_ModelFour} from '../../../../../assets/images';
-import {IC_Delete} from '../../../../../assets/icons';
+import SwiperFlatList from 'react-native-swiper-flatlist';
 import scale from '../../../../../constants/responsive';
 import color from '../../../../../constants/color';
-import SwiperFlatList from 'react-native-swiper-flatlist';
+import {IC_Delete} from '../../../../../assets/icons';
 
 const ZoomImageView = props => {
   const [sHeight, setSHeight] = useState(0);

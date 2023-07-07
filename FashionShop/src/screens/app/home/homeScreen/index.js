@@ -10,25 +10,17 @@ import {
   Dimensions,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
+
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import Custom_Footer from '../../../../components/footer/Custom_Footer';
-import Custom_ItemScrollView from './components/Custom_ItemScrollView';
 import Custom_HomepageProd from '../../../../components/products/CustomHomepageProd';
 import Custom_Tag1 from '../../../../components/tags/fill';
 import scale from '../../../../constants/responsive';
-import {
-  IMG_Collection,
-  IMG_Logo,
-  IMG_ModelFour,
-  IMG_ModelOne,
-  IMG_ModelThree,
-  IMG_ModelTwo,
-} from '../../../../assets/images';
-import {Sticker1, Sticker2, Sticker3, Sticker4, Sticker5} from './images';
-import {LineBottom} from '../../../../components/footer/images';
 import FONT_FAMILY from '../../../../constants/fonts';
 import color from '../../../../constants/color';
-import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import {IMG_Logo} from '../../../../assets/images';
+import {LineBottom} from '../../../../components/footer/images';
 
 const HomeScreen = props => {
   const [banners, setBanners] = useState([]);

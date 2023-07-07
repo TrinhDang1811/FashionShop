@@ -1,40 +1,31 @@
 import {
   SafeAreaView,
   StyleSheet,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
-  Image,
   TextInput,
-  Button,
 } from 'react-native';
-import React from 'react';
-import color from '../../../../constants/color';
-import FONT_FAMILY from '../../../../constants/fonts';
-import scale from '../../../../constants/responsive';
-import {
-  IC_BackwardArrow,
-  IC_Address,
-  IC_Phone,
-  IC_Email,
-  IC_Password,
-  IC_Edit,
-} from '../../../../assets/icons';
-import {Avatar, Title, Caption} from 'react-native-paper';
-import {useState, useEffect} from 'react';
-import SaveButton from '../../../../components/buttons/Save';
-import {ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {Avatar} from 'react-native-paper';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import {PermissionsAndroid} from 'react-native';
-import Popup from './component/popup';
 import Modal from 'react-native-modal';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Controller, useForm} from 'react-hook-form';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
 import {useDispatch, useSelector} from 'react-redux';
+
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import SaveButton from '../../../../components/buttons/Save';
+import Popup from './component/popup';
+import OKMessageBox from '../../../../components/messageBox/OKMessageBox';
 import {initUser} from '../../../../redux/actions/userActions';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import {IC_BackwardArrow, IC_Phone} from '../../../../assets/icons';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 const phoneRegExp =

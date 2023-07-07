@@ -8,17 +8,18 @@ import {
   Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import {IC_Plus, IC_Edit, IC_CartDelete} from '../../../../assets/icons';
-import color from '../../../../constants/color';
-import FONT_FAMILY from '../../../../constants/fonts';
-import scale from '../../../../constants/responsive';
 import {useDispatch, useSelector} from 'react-redux';
+
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
+import {IC_Plus, IC_Edit, IC_CartDelete} from '../../../../assets/icons';
 import {LineBottom} from '../../../../components/footer/images';
 import {
   editAddress,
   removeAddress,
 } from '../../../../redux/actions/addressActions';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 
 const ListOfAddressesScreen = props => {
   const {prevScreen} = props.route.params;

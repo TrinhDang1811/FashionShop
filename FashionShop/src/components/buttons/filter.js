@@ -7,11 +7,11 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import color from '../../constants/color';
+import {useMemo} from 'react';
 import scale from '../../constants/responsive';
+import color from '../../constants/color';
 import FONT_FAMILY from '../../constants/fonts';
 import {IC_Filter} from '../../assets/icons';
-import {useMemo} from 'react';
 import {RadioButton} from 'react-native-paper';
 
 const Filter = props => {

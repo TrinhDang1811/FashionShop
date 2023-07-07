@@ -1,10 +1,9 @@
 import {StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import Color from '../../constants/color';
-import {IC_Menu, IC_Search, IC_ShoppingBagHeader} from '../../assets/icons';
-import scale from '../../constants/responsive';
-import {IC_Logo} from '../logo';
 import {useSelector} from 'react-redux';
+import scale from '../../constants/responsive';
+import {IC_Menu, IC_Search, IC_ShoppingBagHeader} from '../../assets/icons';
+import {IC_Logo} from '../logo';
 
 const Custom_Header = ({
   logoColor,

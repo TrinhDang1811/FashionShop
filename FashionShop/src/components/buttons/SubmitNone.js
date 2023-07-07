@@ -1,8 +1,8 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Color from '../../constants/color';
 import scale from '../../constants/responsive';
 import FONT_FAMILY from '../../constants/fonts';
+import Color from '../../constants/color';
 
 const SubmitNone = props => {
   return (

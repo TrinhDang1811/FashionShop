@@ -1,15 +1,13 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import color from '../../../../constants/color';
 import scale from '../../../../constants/responsive';
-import { IC_ShoppingBag } from '../../../../assets/icons';
+import color from '../../../../constants/color';
 import FONT_FAMILY from '../../../../constants/fonts';
+import {IC_ShoppingBag} from '../../../../assets/icons';
 
 const Button = props => {
   return (
-    <TouchableOpacity style={styles.container} 
-    onPress={props.onPress}
-    >
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <IC_ShoppingBag stroke={color.White} />
       <Text style={styles.text}>{props.text}</Text>
     </TouchableOpacity>

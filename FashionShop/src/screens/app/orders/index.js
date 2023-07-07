@@ -11,12 +11,17 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import {reOrder} from '../../../redux/actions/cartActions';
 import scale from '../../../constants/responsive';
-import color from '../../../constants/color';
-import PriceAttribute from './components/priceAttribute';
-import ButtonReOrder from './components/buttonOrder';
 import FONT_FAMILY from '../../../constants/fonts';
+import color from '../../../constants/color';
+import ButtonOrder from './components/buttonOrder';
+import PriceAttribute from './components/priceAttribute';
 import {
   IC_Cancel,
   IC_New,
@@ -24,11 +29,6 @@ import {
   IC_Delivering,
   IC_Preparing,
 } from '../../../assets/icons';
-import {useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import ButtonOrder from './components/buttonOrder';
-import {reOrder} from '../../../redux/actions/cartActions';
 
 const {width: screenWidth} = Dimensions.get('window');
 

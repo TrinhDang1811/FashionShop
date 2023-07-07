@@ -2,22 +2,21 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  Image,
   TouchableOpacity,
   View,
   FlatList,
   ScrollView,
-  Button,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import color from '../../../../constants/color';
-import scale from '../../../../constants/responsive';
-import FONT_FAMILY from '../../../../constants/fonts';
+
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import Custom_GridViewProd from '../../../../components/products/CustomGridViewProd';
 import Custom_Footer from '../../../../components/footer/Custom_Footer';
-import Filter from '../../../../components/buttons/filter';
 import Custom_Tag2 from '../../../../components/tags/border';
+import Filter from '../../../../components/buttons/filter';
+import scale from '../../../../constants/responsive';
+import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
 
 const CategoryGridViewByIdScreen = props => {
   const {data} = props.route.params;

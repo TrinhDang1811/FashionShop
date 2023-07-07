@@ -1,10 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import color from '../../../../constants/color';
 import scale from '../../../../constants/responsive';
 import FONT_FAMILY from '../../../../constants/fonts';
+import color from '../../../../constants/color';
 
-const ButtonOrder = (props) => {
+const ButtonOrder = props => {
   return (
     <TouchableOpacity style={(props.isRated===false || props.isRated===undefined)?styles.button:styles.buttonDisable}
       onPress={props.onPress}>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: scale(31),
     justifyContent: 'center',
     alignSelf: 'flex-end',
-    marginRight:scale(7)
+    marginRight: scale(7),
   },
   buttonDisable: {
     backgroundColor: color.GraySolid,

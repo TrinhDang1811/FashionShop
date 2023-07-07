@@ -7,23 +7,24 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import color from '../../../constants/color';
-import FONT_FAMILY from '../../../constants/fonts';
-import {IC_BackwardArrow} from '../../../assets/icons';
-import scale from '../../../constants/responsive';
-import SaveButton from '../../../components/buttons/Save';
 import {axiosPrivate} from '../../../apis/axios';
 import useAuth from '../../../hooks/useAuth';
 import * as yup from 'yup';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../../features/auth/userSlice';
+
 import {initUser} from '../../../redux/actions/userActions';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import {initCartLogIn} from '../../../redux/actions/cartActions';
 import {initAddress} from '../../../redux/actions/addressActions';
+
 import OKMessageBox from '../../../components/messageBox/OKMessageBox';
+import SaveButton from '../../../components/buttons/Save';
+import scale from '../../../constants/responsive';
+import FONT_FAMILY from '../../../constants/fonts';
+import color from '../../../constants/color';
+import {IC_BackwardArrow} from '../../../assets/icons';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
 

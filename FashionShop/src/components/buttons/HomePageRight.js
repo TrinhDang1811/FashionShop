@@ -1,9 +1,9 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Color from '../../constants/color';
-import {IC_ForwardArrow} from '../../assets/icons';
 import scale from '../../constants/responsive';
 import FONT_FAMILY from '../../constants/fonts';
+import Color from '../../constants/color';
+import {IC_ForwardArrow} from '../../assets/icons';
 
 const HomePageRight = props => {
   return (

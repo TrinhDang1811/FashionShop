@@ -7,11 +7,10 @@ import {
   Image,
 } from 'react-native';
 import React from 'react';
-import Color from '../../../constants/color';
-import FONT_FAMILY from '../../../constants/fonts';
-import {IMG_Logo} from '../../../assets/images';
 import scale from '../../../constants/responsive';
-import {IC_BackwardArrow} from '../../../assets/icons';
+import FONT_FAMILY from '../../../constants/fonts';
+import Color from '../../../constants/color';
+import {IMG_Logo} from '../../../assets/images';
 
 const OnboardingScreen = props => {
   return (
