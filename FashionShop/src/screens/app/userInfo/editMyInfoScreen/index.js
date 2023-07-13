@@ -284,7 +284,7 @@ const EditMyInfoScreen = props => {
               </View>
             )}
           /> */}
-          {editingPassword ? (
+          {/* {editingPassword ? (
             <Controller
               name="passwordConfirm"
               control={control}
@@ -313,7 +313,7 @@ const EditMyInfoScreen = props => {
                 </View>
               )}
             />
-          ) : null}
+          ) : null} */}
 
           {/* phone number */}
           <Controller

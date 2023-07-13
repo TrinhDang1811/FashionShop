@@ -46,8 +46,7 @@ const ProductDetailsScreen = props => {
   const [availableSize, setAvailableSize] = useState([]);
   const [notExistSize, setNotExistSize] = useState(false);
   const {data} = props.route.params;
-  const cart = useSelector(state => state.cart);
-  const {cartItems} = cart;
+  console.log({data})
 
   const dispatch = useDispatch();
   const addToCartHandler = async () => {
@@ -235,6 +234,7 @@ const ProductDetailsScreen = props => {
             <Text style={styles.prodDescription}>{data.description}</Text>
           </View>
           <Text style={styles.prodPrice}>${data.price}</Text>
+          <Text style={styles.prodPrice}>Quantity: {data.quantity}</Text>
           <>
             <View style={{flexDirection: 'row', marginTop: scale(18)}}>
               <View
@@ -304,8 +304,10 @@ const ProductDetailsScreen = props => {
                       borderWidth: 1,
                       borderColor:
                         sizeChoose === item.sizeId ? color.Body : color.Border,
-                      width: scale(16),
+                      // width: scale(16),
+                      // maxWidth: scale(50),
                       height: scale(16),
+                      minWidth:scale(16),
                       alignItems: 'center',
                       backgroundColor:
                         sizeChoose === item.sizeId
@@ -336,6 +338,7 @@ const ProductDetailsScreen = props => {
         {/* Button Add To Basket */}
         <View style={{marginTop: scale(24.5)}}>
           <AddToBasket
+            quantity={data.quantity}
             onPress={() => {
               addToCartHandler();
             }}

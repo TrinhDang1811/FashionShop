@@ -8,7 +8,7 @@ import FONT_FAMILY from '../../constants/fonts';
 const AddToBasket = props => {
   const [liked, setLiked] = useState(false);
   return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
+    <TouchableOpacity style={styles.container} onPress={props.onPress} disabled={props.quantity===0?true:false}>
       <View style={styles.view}>
         <IC_Plus stroke={color.White} style={styles.IcPlus} />
         <Text style={styles.text}>ADD TO CART</Text>

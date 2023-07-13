@@ -21,6 +21,7 @@ import Button from './components/button';
 import OKMessageBox from '../../../components/messageBox/OKMessageBox';
 import color from '../../../constants/color';
 import {IC_Close} from '../../../assets/icons';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
 const CartScreen = props => {
   const dispatch = useDispatch();
@@ -30,8 +31,10 @@ const CartScreen = props => {
   const [notExistCart, setNotExistCart] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
+  const axiosPrivate = useAxiosPrivate();
   const cart = useSelector(state => state.cart);
   const {cartItems} = cart;
+  const {cartId} = cart;
 
   const checkOutCart = cartItems.filter(item => item.isOrder === true);
   console.log({checkOutCart});
@@ -53,6 +56,29 @@ const CartScreen = props => {
       });
     }
     setTotalAmount(total);
+  };
+  const buyNowHandler = async () => {
+    try {
+      console.log({cartId})
+      const editCart = [];
+      cartItems.map(item => {
+        const editCartItem = {
+          productDetailId: item.detailId,
+          quantity: item.qty,
+        };
+        editCart.push(editCartItem);
+      });
+      const response = await axiosPrivate.put(
+        `/edit-cart-item/${cartId}`,
+        JSON.stringify({
+          productDetails: editCart,
+        }),
+      );
+      console.log('editCartSuccess', JSON.stringify(response.data));
+      props.navigation.navigate('CheckOutStackScreen');
+    } catch (error) {
+      console.log('Error', JSON.stringify(error?.response?.data));
+    }
   };
 
   const qtyChangeHandler = (id, qty) => {
@@ -102,30 +128,6 @@ const CartScreen = props => {
           flexDirection: 'row',
         }}>
         <Text style={styles.cartText}>CART</Text>
-        {/* SELECT ALL */}
-        {/* <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderRadius: scale(5),
-            width: scale(20),
-            height: scale(20),
-            backgroundColor: isOrder ? color.Secondary : 'transparent',
-            alignSelf: 'center',
-            borderColor: color.TitleActive,
-          }}
-          onPress={() => orderAllHandler()}>
-          <Text
-            style={{
-              fontFamily: FONT_FAMILY.Regular,
-              textAlign: 'center',
-              justifyContent: 'center',
-              color: isOrder ? color.OffWhite : 'transparent',
-              fontSize: scale(12),
-            }}>
-            ✓
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.selectAllText}>Select All</Text> */}
       </View>
       {visible ? (
         <View style={{flexDirection: 'column', height: '84%'}}>
@@ -136,11 +138,12 @@ const CartScreen = props => {
                 <View key={item.detailId}>
                   <Custom_Cart
                     onPress={() =>
-                      props.navigation.navigate('ProductStackScreen', {
+                      props.navigation.replace('ProductStackScreen', {
                         screen: 'ProductDetailsScreen',
                         params: {data: item.product},
                       })
                     }
+                    quantity={item.quantity}
                     id={item.detailId}
                     isOrder={item.isOrder}
                     qty={item.qty}
@@ -240,14 +243,21 @@ const CartScreen = props => {
       )}
       {/* Button */}
       <Button
-        text={checkOutCart.length !== 0 ? 'BUY NOW' : 'CONTINUE SHOPPING'}
-        onPress={() =>
-          cartItems.length === 0
-            ? setNotExistCart(true)
-            : checkOutCart.length !== 0
-            ? props.navigation.navigate('CheckOutStackScreen')
-            : setNotExistOrder(true)
-        }
+        text={cartItems.length !== 0 ? 'BUY NOW' : 'CONTINUE SHOPPING'}
+        onPress={() => {
+          if(cartItems.length === 0)
+          { 
+            setNotExistCart(true) 
+          }
+          else{ 
+            if(checkOutCart.length !== 0)
+            { 
+              buyNowHandler()
+            }
+          else {
+            setNotExistOrder(true)
+          }}
+        }}
       />
     </SafeAreaView>
   );

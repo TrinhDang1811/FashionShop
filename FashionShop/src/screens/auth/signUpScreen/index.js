@@ -22,7 +22,7 @@ import SaveButton from '../../../components/buttons/Save';
 import scale from '../../../constants/responsive';
 import FONT_FAMILY from '../../../constants/fonts';
 import color from '../../../constants/color';
-import {IC_BackwardArrow} from '../../../assets/icons';
+import {IC_BackwardArrow, IC_Password} from '../../../assets/icons';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 const phoneRegExp =
@@ -65,6 +65,8 @@ const SignUpScreen = props => {
   const {setAuth} = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -92,6 +94,13 @@ const SignUpScreen = props => {
     },
     resolver: yupResolver(signUpPayloadSchema),
   });
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const handleSignup = async data => {
     try {
@@ -279,8 +288,13 @@ const SignUpScreen = props => {
           render={({field: {onChange, value}}) => (
             <View style={styles.inputPassword}>
               <View style={styles.viewInput}>
+                <View style={styles.icon}>
+                  <TouchableOpacity onPress={handleShowPassword}>
+                    <IC_Password />
+                  </TouchableOpacity>
+                </View>
                 <TextInput
-                  secureTextEntry={true}
+                  secureTextEntry={!showPassword}
                   onChangeText={password => [
                     onChange(password),
                     setPassword(password),
@@ -304,8 +318,13 @@ const SignUpScreen = props => {
           render={({field: {onChange, value}}) => (
             <View style={styles.inputPasswordConfirm}>
               <View style={styles.viewInput}>
+                <View style={styles.icon}>
+                  <TouchableOpacity onPress={handleShowConfirmPassword}>
+                    <IC_Password />
+                  </TouchableOpacity>
+                </View>
                 <TextInput
-                  secureTextEntry={true}
+                  secureTextEntry={!showConfirmPassword}
                   onChangeText={passwordConfirm => [
                     onChange(passwordConfirm),
                     setPasswordConfirm(password),
@@ -353,6 +372,13 @@ const styles = StyleSheet.create({
     height: scale(30),
     marginTop: scale(23),
     alignItems: 'center',
+  },
+  icon: {
+    alignItems: 'flex-end',
+    width: '10%',
+    position:'absolute',
+    top: scale(30),
+    marginLeft: scale(290),
   },
   ViewTitleText: {
     marginTop: scale(10),

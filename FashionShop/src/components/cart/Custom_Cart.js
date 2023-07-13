@@ -30,118 +30,127 @@ const Custom_Cart = props => {
   }, [count, isOrder]);
 
   return (
-    <TouchableOpacity onPress={props.onPress} key={props.id}>
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderRadius: scale(5),
-            marginRight: scale(7),
-            width: scale(20),
-            height: scale(20),
-            backgroundColor: isOrder ? Color.Secondary : 'transparent',
-            alignSelf: 'center',
-            borderColor: Color.TitleActive,
-          }}
-          onPress={() => setIsOrder(!isOrder)}>
-          <Text
+    <View key={props.id} style={{borderBottomWidth: 1}} >
+      {props.quantity === 0?(
+        <Text style={styles.outOfStock}>Not Available</Text>
+      ):null}
+      <TouchableOpacity onPress={props.onPress} disabled={props.quantity === 0?true:false} 
+      style={props.quantity === 0?{opacity:0.5, zIndex:0}:null}>
+        <View style={styles.container}>
+          <TouchableOpacity
             style={{
-              fontFamily: FONT_FAMILY.Regular,
-              textAlign: 'center',
-              justifyContent: 'center',
-              color: isOrder ? Color.OffWhite : 'transparent',
-              fontSize: scale(12),
-            }}>
-            ✓
-          </Text>
-        </TouchableOpacity>
-        <View style={styles.imgContainer}>
-          <Image
-            source={{uri: `${props.img}`}}
-            style={styles.img}
-            resizeMode={'stretch'}
-          />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.prodName}>{props.name}</Text>
-          <Text style={styles.prodDescription} numberOfLines={3}>
-            {props.description}
-          </Text>
-          <View style={styles.viewValue}>
-            <View style={styles.Sub}>
-              <TouchableOpacity
-                onPress={decCount}
-                hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                <Text style={styles.textTouch}>-</Text>
-              </TouchableOpacity>
-            </View>
-            <Text onChange style={styles.styleTextNumber}>
-              {count}
-            </Text>
-            <View style={styles.Sub}>
-              <TouchableOpacity
-                onPress={inCount}
-                hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-                <Text style={styles.textTouch}>+</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.prodPrice}>${props.price * count}</Text>
-            <View
+              borderWidth: 1,
+              borderRadius: scale(5),
+              marginRight: scale(7),
+              width: scale(20),
+              height: scale(20),
+              backgroundColor: isOrder ? Color.Secondary : 'transparent',
+              alignSelf: 'center',
+              borderColor: Color.TitleActive,
+            }}
+            disabled={props.quantity === 0?true:false}
+            onPress={() => setIsOrder(!isOrder)}>
+            <Text
               style={{
-                borderRadius: 360,
-                borderColor: Color.PlaceHolder,
-                borderWidth: 1,
-                alignItems: 'center',
+                fontFamily: FONT_FAMILY.Regular,
+                textAlign: 'center',
                 justifyContent: 'center',
-                width: scale(22),
-                height: scale(22),
-                marginLeft: scale(10),
+                color: isOrder ? Color.OffWhite : 'transparent',
+                fontSize: scale(12),
               }}>
+              ✓
+            </Text>
+          </TouchableOpacity>
+          <View style={styles.imgContainer}>
+            <Image
+              source={{uri: `${props.img}`}}
+              style={styles.img}
+              resizeMode={'stretch'}
+            />
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.prodName}>{props.name}</Text>
+            <Text style={styles.prodDescription} numberOfLines={3}>
+              {props.description}
+            </Text>
+            <View style={styles.viewValue}>
+              <View style={styles.Sub}>
+                <TouchableOpacity
+                  disabled={props.quantity === 0?true:false}
+                  onPress={decCount}
+                  hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                  <Text style={styles.textTouch}>-</Text>
+                </TouchableOpacity>
+              </View>
+              <Text onChange style={styles.styleTextNumber}>
+                {props.quantity === 0?0:count}
+              </Text>
+              <View style={styles.Sub}>
+                <TouchableOpacity
+                  disabled={props.quantity === 0?true:false}
+                  onPress={inCount}
+                  hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+                  <Text style={styles.textTouch}>+</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.prodPrice}>${props.price * count}</Text>
               <View
                 style={{
                   borderRadius: 360,
-                  backgroundColor: props.colorCode,
+                  borderColor: Color.PlaceHolder,
+                  borderWidth: 1,
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  width: scale(16),
-                  height: scale(16),
-                }}
-              />
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginLeft: scale(10),
-              }}>
-              <Text
-                style={{
-                  color: Color.TitleActive,
-                  fontFamily: FONT_FAMILY.Regular,
-                  fontSize: scale(12),
-                  lineHeight: scale(14),
-                  textAlign: 'center',
+                  width: scale(22),
+                  height: scale(22),
+                  marginLeft: scale(10),
                 }}>
-                {props.sizeName}
-              </Text>
+                <View
+                  style={{
+                    borderRadius: 360,
+                    backgroundColor: props.colorCode,
+                    justifyContent: 'center',
+                    width: scale(16),
+                    height: scale(16),
+                  }}
+                />
+              </View>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: scale(10),
+                }}>
+                <Text
+                  style={{
+                    color: Color.TitleActive,
+                    fontFamily: FONT_FAMILY.Regular,
+                    fontSize: scale(12),
+                    lineHeight: scale(14),
+                    textAlign: 'center',
+                  }}>
+                  {props.sizeName}
+                </Text>
+              </View>
             </View>
           </View>
+          <TouchableOpacity
+            onPress={() => props.removeHandler(props.id)}
+            style={{
+              alignSelf: 'flex-end',
+              height: scale(50),
+              width: scale(60),
+              alignItems: 'center',
+            }}>
+            <IC_CartDelete
+              style={{marginTop: scale(15), marginLeft: scale(40)}}
+            />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={() => props.removeHandler(props.id)}
-          style={{
-            alignSelf: 'flex-end',
-            height: scale(50),
-            width: scale(60),
-            alignItems: 'center',
-          }}>
-          <IC_CartDelete
-            style={{marginTop: scale(15), marginLeft: scale(40)}}
-          />
-        </TouchableOpacity>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -154,7 +163,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
     justifyContent: 'space-between',
-    borderTopWidth: 1,
   },
   imgContainer: {
     alignSelf: 'center',
@@ -177,6 +185,16 @@ const styles = StyleSheet.create({
     fontSize: scale(15),
     marginLeft: scale(10),
     color: Color.Body,
+  },
+  outOfStock: {
+    fontFamily: FONT_FAMILY.Bold,
+    fontSize: scale(25),
+    fontWeight:'700',
+    marginLeft: scale(100),
+    marginTop:scale(50),
+    color: Color.Primary,
+    position:'absolute',
+    zIndex:2,
   },
   prodDescription: {
     fontFamily: FONT_FAMILY.Regular,

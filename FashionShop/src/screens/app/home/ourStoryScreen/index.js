@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   bodyTextBox: {
     alignSelf: 'center',
     marginTop: scale(20),
+    padding: 10,
   },
   bodyText: {
     color: color.TitleActive,

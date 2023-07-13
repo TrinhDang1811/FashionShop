@@ -24,7 +24,7 @@ import SaveButton from '../../../components/buttons/Save';
 import scale from '../../../constants/responsive';
 import FONT_FAMILY from '../../../constants/fonts';
 import color from '../../../constants/color';
-import {IC_BackwardArrow} from '../../../assets/icons';
+import {IC_BackwardArrow, IC_Password} from '../../../assets/icons';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
 
@@ -52,6 +52,7 @@ const SignInScreen = props => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [title, setTitle] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [forgetPasswordVisible, setForgetPasswordVisible] = useState(false);
   const [forgetPasswordMessage, setForgetPasswordMessage] = useState('');
   const dispatch = useDispatch();
@@ -71,6 +72,9 @@ const SignInScreen = props => {
     },
     resolver: yupResolver(signInPayLoadSchema),
   });
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   const forgetPassword = async () => {
     if (email) {
       try {
@@ -216,8 +220,13 @@ const SignInScreen = props => {
           render={({field: {onChange, value}}) => (
             <View style={styles.inputMailBox}>
               <View style={styles.viewInput}>
+                <View style={styles.icon}>
+                  <TouchableOpacity onPress={handleShowPassword}>
+                    <IC_Password />
+                  </TouchableOpacity>
+                </View>
                 <TextInput
-                  secureTextEntry={true}
+                  secureTextEntry={!showPassword}
                   onChangeText={password => [
                     onChange(password),
                     setPass(password),
@@ -263,6 +272,13 @@ const styles = StyleSheet.create({
     flex: 0.3,
     backgroundColor: color.TitleActive,
     justifyContent: 'flex-end',
+  },
+  icon: {
+    alignItems: 'flex-end',
+    width: '10%',
+    position:'absolute',
+    top: scale(65),
+    marginLeft: scale(290),
   },
   viewIcon: {
     marginLeft: scale(30),

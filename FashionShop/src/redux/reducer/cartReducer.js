@@ -82,6 +82,7 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
           colorCode: item.productDetailId.colorId.code,
           sizeName: item.productDetailId.sizeId.name,
           qty: item.quantity,
+          quantity: item.productDetailId.quantity,
           isOrder: false,
         }),
       );

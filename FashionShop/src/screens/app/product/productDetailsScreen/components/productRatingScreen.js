@@ -43,11 +43,11 @@ const ProductRatingScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{flexDirection: 'column',marginLeft:scale(5)}}>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.viewIcon}
         onPress={() => props.navigation.goBack()}>
         <IC_Backward />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
         <Text style={styles.ratingText}>REVIEWS</Text>
         <Image source={LineBottom} style={{alignSelf: 'center'}} resizeMode='stretch'/>
         {data.map((item,index) => (

@@ -19,13 +19,14 @@ import {useForm, Controller} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 
-import {resetCartOrder} from '../../../../redux/actions/cartActions';
+import {initCartLogIn, resetCartOrder} from '../../../../redux/actions/cartActions';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import {initAddress} from '../../../../redux/actions/addressActions';
 import Custom_CheckOutCart from './components/Custom_CheckOutCart';
 import scale from '../../../../constants/responsive';
 import color from '../../../../constants/color';
 import FONT_FAMILY from '../../../../constants/fonts';
+import OKMessageBox from '../../../../components/messageBox/OKMessageBox'
 import {LineBottom} from '../../../../components/footer/images';
 import {IC_Forward, IC_Location, IC_Plus} from '../../../../assets/icons';
 
@@ -40,7 +41,8 @@ const CheckOut = props => {
   ]);
   const [methodValue, setMethodValue] = useState(5);
   const [methodOpen, setMethodOpen] = useState(false);
-  // const [address, setAddress] = useState([]);
+  const [message, setMessage] = useState('');
+  const [visibleError, setVisibleError] = useState(false);
   const {handleSubmit, control} = useForm();
 
   const dispatch = useDispatch();
@@ -125,6 +127,18 @@ const CheckOut = props => {
       console.log('error', error.response.data);
     }
   };
+  const getCart = async id => {
+    try {
+      console.log('userId', id);
+      const responseCart = await axiosPrivate.get(
+        `/get-cart-by-user-id/${id}`,
+      );
+      console.log('------');
+      dispatch(initCartLogIn(responseCart.data));
+    } catch (err) {
+      console.log('err', err);
+    }
+  };
   const placeOrderHandler = async () => {
     try {
       const orderCart = [];
@@ -174,10 +188,17 @@ const CheckOut = props => {
       });
     } catch (error) {
       console.log('error', error.response.data);
+      getCart(userInfo._id);
+      setVisibleError(true);
+      setMessage(error.response.data.error);
     }
   };
   return (
     <SafeAreaView style={styles.container}>
+      <OKMessageBox visible={visibleError} 
+          clickCancel={() => props.navigation.navigate('CartScreen')} 
+          title={'Error'} 
+          message={message}/>
       <ScrollView>
         <View style={styles.introTextBox}>
           <Text style={styles.introText}>CHECKOUT</Text>
