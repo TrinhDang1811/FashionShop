@@ -62,7 +62,7 @@ const OrderSuccess = props => {
         title={'CANCEL CONFIRMATION?'}
         message={'Do you want to cancel your order?'}
       />
-      <View>
+      <ScrollView>
         <View style={styles.introTextBox}>
           <Text style={styles.introText}>ORDER RECEIVED</Text>
           <IC_Success style={styles.icon} />
@@ -98,11 +98,14 @@ const OrderSuccess = props => {
               </Text>
             ) : (
               <View style={{flexDirection: 'column'}}>
-                <Text style={styles.userText} numberOfLines={1}>
+                <Text style={styles.userText} numberOfLines={2}>
                   Shop's location: University Of Information Technology
                 </Text>
                 <Text style={styles.userText} numberOfLines={1}>
                   Contact number: (786) 713-8616
+                </Text>
+                <Text style={styles.userText} numberOfLines={2}>
+                If you do not arrive after 7 days from the date of booking, the order will be cancelled
                 </Text>
               </View>
             )}
@@ -139,7 +142,7 @@ const OrderSuccess = props => {
           onPress={() => setVisible(true)}>
           <Text style={styles.button}>CANCEL</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -208,7 +211,7 @@ const styles = StyleSheet.create({
   },
   userText: {
     color: color.TitleActive,
-    fontSize: 18,
+    fontSize: scale(16),
     fontWeight: '400',
     fontFamily: FONT_FAMILY.RegularForAddress,
     marginTop: scale(5),

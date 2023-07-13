@@ -16,6 +16,7 @@ import { dollarType } from '../../config/currency'
 
 const OrderDetailScreen = (props) => {
     const { order } = props.route.params;
+    console.log({order})
     const [totalItems, setTotalItems] = useState(0);
 
     useEffect(() => {
@@ -139,10 +140,10 @@ const OrderDetailScreen = (props) => {
                     <Text style={styles.textOrange}>Receiver: </Text>
                     <Text style={styles.text}>{order.userName}</Text>
                 </View>
-                <View style={styles.row}>
+                {order.address.city === undefined ? (null):(<View style={styles.row}>
                     <Text style={styles.textOrange}>Address: </Text>
                     <Text style={styles.text}>{order.address.streetAndNumber}, {order.address.ward}, {order.address.district}, {order.address.city}</Text>
-                </View>
+                </View>)}
                 <View style={styles.row}>
                     <Text style={styles.textOrange}>Order Status: </Text>
                     <Text style={styles.text}>{order.orderStatus}</Text>

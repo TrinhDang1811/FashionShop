@@ -234,7 +234,7 @@ const ProductDetailsScreen = props => {
             <Text style={styles.prodDescription}>{data.description}</Text>
           </View>
           <Text style={styles.prodPrice}>${data.price}</Text>
-          <Text style={styles.prodPrice}>Quantity: {data.quantity}</Text>
+          {data.quantity < 10 ? (<Text style={styles.prodPrice}>Quantity: {data.quantity}</Text>):(null)}
           <>
             <View style={{flexDirection: 'row', marginTop: scale(18)}}>
               <View

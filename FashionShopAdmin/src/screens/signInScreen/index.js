@@ -183,9 +183,9 @@ const SignInScreen = props => {
           />
         </View>
 
-        <TouchableOpacity style={styles.ViewForgotText}>
+        {/* <TouchableOpacity style={styles.ViewForgotText}>
           <Text style={styles.textForgot}>Forgot your password?</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );

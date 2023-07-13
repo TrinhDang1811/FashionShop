@@ -3,6 +3,9 @@ import React from 'react'
 import MyNavigationContainer from './src/router/navigationContainer'
 import { AuthProvider } from './src/context/AuthProvider'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {LogBox} from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 const App = () => {
   return (

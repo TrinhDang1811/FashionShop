@@ -22,7 +22,7 @@ const NavBar = (props) => {
 
         <TouchableOpacity style={chosen=="shipping"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("shipping")}}>
             <IC_ShippingOrder />
-            <Text style={chosen=="shipping"?styles.textTabChosen:styles.textTab}>Shipping</Text>
+            <Text style={chosen=="shipping"?styles.textTabChosen:styles.textTab}>Shipping/PUS</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={chosen=="complete"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("complete")}}>

@@ -350,7 +350,7 @@ const CheckOut = props => {
         </View>
 
         {/* Cart Items */}
-        <View style={styles.viewScroll}>
+        <View style={methodValue === 5? styles.viewScrollOnline:styles.viewScrollOffline}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {checkOutCart.map(item => (
               <View key={item.detailId}>
@@ -520,13 +520,17 @@ const styles = StyleSheet.create({
     fontFamily: FONT_FAMILY.Regular,
     alignSelf: 'center',
   },
-  viewScroll: {
+  viewScrollOnline: {
     alignSelf: 'center',
-    // marginLeft: scale(7),
     height: scale(250),
     marginTop: scale(10),
     zIndex: -1,
-    // borderTopWidth: 1,
+  },
+  viewScrollOffline: {
+    alignSelf: 'center',
+    height: scale(300),
+    marginTop: scale(10),
+    zIndex: -1,
   },
   PlusPosition: {
     position: 'absolute',

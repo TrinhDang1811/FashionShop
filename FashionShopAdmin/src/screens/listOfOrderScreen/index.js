@@ -49,6 +49,7 @@ const ListOfOrderScreen = (props) => {
   }, [isFocus]);
 
   const [chosen, setChosen] = useState('new');
+  const [method, setMethod] = useState('Delivery');
   const [subChosen, setSubChosen] = useState('return');
   const windowWidth = Dimensions.get('window').width;
   return (
@@ -67,13 +68,27 @@ const ListOfOrderScreen = (props) => {
             <UnderLine text={'Canceled'} name={'cancel'} onPress={() => {setSubChosen('cancel'), setChosen('cancel')}} chosen={subChosen}/>
           </View>
       ):(null)}
+      {(chosen==='shipping')?(
+          <View style={{flexDirection: 'row'}}>
+            <UnderLine text={'Shipping'} name={'Delivery'} onPress={() => {setMethod('Delivery'), setChosen('shipping')}} chosen={method}/>
+            <UnderLine text={'PickUp at store'} name={'PickUp at store'} onPress={() => {setMethod('PickUp at store')}} chosen={method}/>
+          </View>
+      ):(null)}
+      {method === 'PickUp at store' ? 
+      (<ScrollView style={{flex: 1}}>
+        {orders.map((item,index) => (item.orderMethod === 'PickUp at store') && (
+          <TouchableOpacity key={item._id} onPress={() => props.navigation.navigate('OrderDetail', {order: item})}>
+            <Order number={index+1} userName={item.userName} orderTime={displayDateTime(item.orderDate)} orderId={item._id} totalPrice={item.orderTotalPrice} userAvatar={item.userAvatar}/>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>):(
       <ScrollView style={{flex: 1}}>
         {orders.map((item,index) => (item.orderStatus === chosen) && (
           <TouchableOpacity key={item._id} onPress={() => props.navigation.navigate('OrderDetail', {order: item})}>
             <Order number={index+1} userName={item.userName} orderTime={displayDateTime(item.orderDate)} orderId={item._id} totalPrice={item.orderTotalPrice} userAvatar={item.userAvatar}/>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </ScrollView>)}
       <NavBar chosen={chosen} setChosen={setChosen} setSubChosen={setSubChosen}/>
     </SafeAreaView>
   )

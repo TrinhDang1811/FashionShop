@@ -52,13 +52,14 @@ const SignInScreen = props => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [title, setTitle] = useState('');
+  const [visible, setVisible] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [forgetPasswordVisible, setForgetPasswordVisible] = useState(false);
   const [forgetPasswordMessage, setForgetPasswordMessage] = useState('');
   const dispatch = useDispatch();
   const axiosPrivate = useAxiosPrivate();
 
-  const [visible, setVisible] = useState(false);
+  
 
   const {
     control,
@@ -153,10 +154,10 @@ const SignInScreen = props => {
       setLoading(false);
       props.navigation.navigate('AppStackScreen');
     } catch (err) {
-      console.log('err', err);
+      console.log('err', err.response?.data.error);
       setLoading(false);
       setVisible(true);
-      setErrorMessage(err.response?.data.error);
+      setErrorMessage(err.response?.data.error||'Error Network');
       setTitle('Error');
     }
   };
