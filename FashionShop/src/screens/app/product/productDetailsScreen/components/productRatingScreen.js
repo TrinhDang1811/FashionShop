@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import useAxiosPrivate from '../../../../../hooks/useAxiosPrivate';
 import color from '../../../../../constants/color';
@@ -6,6 +6,7 @@ import Custom_Review from './Custom_Review';
 import scale from '../../../../../constants/responsive';
 import FONT_FAMILY from '../../../../../constants/fonts';
 import { LineBottom } from '../../../../../components/footer/images';
+import { IC_Backward } from '../../../../../assets/icons';
 
 const ProductRatingScreen = (props) => {
   const {data} = props.route.params;
@@ -42,6 +43,11 @@ const ProductRatingScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{flexDirection: 'column',marginLeft:scale(5)}}>
+      <TouchableOpacity
+        style={styles.viewIcon}
+        onPress={() => props.navigation.goBack()}>
+        <IC_Backward />
+      </TouchableOpacity>
         <Text style={styles.ratingText}>REVIEWS</Text>
         <Image source={LineBottom} style={{alignSelf: 'center'}} resizeMode='stretch'/>
         {data.map((item,index) => (
@@ -68,6 +74,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: color.OffWhite,
+  },
+  viewIcon: {
+    marginLeft: scale(30),
+    width: scale(40),
+    height: scale(30),
+    marginTop: scale(23),
+    alignItems: 'center',
   },
   noMoreText: {
     marginVertical: scale(30),
