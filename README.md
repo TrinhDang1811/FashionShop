@@ -48,4 +48,68 @@ In reality, all customers of a single brand cannot shop at store. Perhaps they a
 * Azure DevOps
 * Microsoft Excel
 </details>
+<details>
+ <summary><h2>5. Installation</h2></summary>
 
+1. Clone repository:
+
+```
+git clone https://github.com/LeDuy0806/EzQuiz-mobile.git
+```
+
+2. Move to FashionShop or FashionShopAdmin:
+
+```
+cd FashionShop
+//or
+cd FashionShopAdmin
+```
+
+3. Install package:
+
+```
+npm install
+```
+4. Change API in constants/api.js by your IP (API will be in this URL of FashionShop Backend https://github.com/KhoiMaiDinh/Fashion_backend)
+
+## Directory structure
+
+-   **src**: Thư mục chứa mã nguồn chính của ứng dụng.
+    -   **assets**: Chứa các tài nguyên như hình ảnh, biểu tượng, vv.
+    -   **components**: Chứa các thành phần React Native có thể sử dụng lại trong ứng dụng.
+    -   **constants**: Chứa các thành phần dùng chung trong hệ thống.
+    -   **layouts**: Chứa các layout tạo sẵn.
+    -   **navigation**: Cấu hình định tuyến và điều hướng trong ứng dụng.
+    -   **slices**: Chứa các tệp tin liên quan đến Redux và quản lý trạng thái ứng dụng.
+    -   **styles**: Chứa các tệp tin liên quan đến giao diện.
+    -   **screens**: Chứa các màn hình chính của ứng dụng.
+    -   **services**: Chứa các dịch vụ cho ứng dụng, chẳng hạn như API.
+    -   **utils**: Các tiện ích và hàm hỗ trợ cho ứng dụng.
+-   **App.js**: Tệp tin gốc của ứng dụng.
+
+## Sử dụng
+
+1. Khởi động dự án bằng ứng dụng Expo go trên điện thoại (làm 1 trong 2 bước 1 và 2):
+
+```
+npm start
+```
+
+sau đó quét Qr để chạy. 2. Khởi động ứng dụng trên iOS Simulator hoặc an Android Virtual Device:
+
+```
+npm run android
+```
+
+hoặc
+
+```
+npm run ios
+```
+
+3. Để có thể đăng nhập vào ứng dụng cần sử dụng Backend tại: https://github.com/LeDuy0806/EzQuizz_server
+
+
+ 
+  
+</details>
