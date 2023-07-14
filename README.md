@@ -75,16 +75,16 @@ npm install
 ## Directory structure
 
 -   **src**: Thư mục chứa mã nguồn chính của ứng dụng.
+    -   **apis**: Chứa các cài đặt APIs.
     -   **assets**: Chứa các tài nguyên như hình ảnh, biểu tượng, vv.
     -   **components**: Chứa các thành phần React Native có thể sử dụng lại trong ứng dụng.
     -   **constants**: Chứa các thành phần dùng chung trong hệ thống.
-    -   **layouts**: Chứa các layout tạo sẵn.
-    -   **navigation**: Cấu hình định tuyến và điều hướng trong ứng dụng.
-    -   **slices**: Chứa các tệp tin liên quan đến Redux và quản lý trạng thái ứng dụng.
-    -   **styles**: Chứa các tệp tin liên quan đến giao diện.
+    -   **context**: Chứa file cấu trúc Provider.
+    -   **hooks**: Chứa các hooks liên quan đến chức năng đăng nhập, đăng ký.
+    -   **redux**: Chứa reducers xử lý.
+    -   **routes**: Cấu hình định tuyến và điều hướng trong ứng dụng.
     -   **screens**: Chứa các màn hình chính của ứng dụng.
-    -   **services**: Chứa các dịch vụ cho ứng dụng, chẳng hạn như API.
-    -   **utils**: Các tiện ích và hàm hỗ trợ cho ứng dụng.
+    -   **utils**: Các base API của ứng dụng.
 -   **App.js**: Tệp tin gốc của ứng dụng.
 
 ## Sử dụng
