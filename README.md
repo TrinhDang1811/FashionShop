@@ -1,7 +1,6 @@
-# FashionApp-Team5
+# FashionApp-Team5 
 
-![LOGO FashionShop Project (2)](https://github.com/thanhtheox/FashionShop/assets/101191565/cf260b68-ba7c-497b-a997-1fedd80788eb)
-
+![image](https://github.com/thanhtheox/FashionShop/assets/101191565/f97008cd-db3d-44cd-92da-0088d9ff2668)
 <details>
   <summary><h2>1. Introduction</h2></summary>
   
