@@ -118,7 +118,7 @@ const OrderSuccess = props => {
           <ScrollView
             style={{
               flexDirection: 'column',
-              height: scale(200),
+              height: data.address.streetAndNumber === undefined ? scale(200):scale(230),
               marginVertical: scale(33),
             }}>
             {data.productDetails.map(item => (

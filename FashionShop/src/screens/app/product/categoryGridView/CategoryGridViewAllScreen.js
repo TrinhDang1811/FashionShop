@@ -35,8 +35,8 @@ const CategoryGridViewAllScreen = props => {
       } catch (err) {
         console.log(err.response.data);
       }
-  
-      const renderItem = ({ item }) => (
+
+      const renderItem = ({item}) => (
         <Custom_GridViewProd
         image={item.posterImage.url}
         prodName={item.name}
@@ -52,17 +52,23 @@ const CategoryGridViewAllScreen = props => {
       return (
         <SafeAreaView style={styles.container}>
           <View style={styles.resultSum}>
-            <View style={{marginRight:scale(30)}}>
-              <Text style={styles.sum}>{product.length + ' products\nof all'}</Text>
+            <View style={{marginRight: scale(30)}}>
+              <Text style={styles.sum}>
+                {product.length + ' PRODUCTS\nOF ALL'}
+              </Text>
             </View>
-            <Filter onSortChange={arrangeProducts}
-                    selectedValue={filterValue}
+            <Filter
+              onSortChange={arrangeProducts}
+              selectedValue={filterValue}
             />
           </View>
           <ScrollView style={styles.list}>
             <View style={styles.likeProductContainer}>
               <FlatList
-                contentContainerStyle={{alignContent: 'space-around', marginTop:scale(20)}}
+                contentContainerStyle={{
+                  alignContent: 'space-around',
+                  marginTop: scale(20),
+                }}
                 horizontal={false}
                 data={productPage}
                 keyExtractor={item => `${item._id}`}
@@ -70,17 +76,32 @@ const CategoryGridViewAllScreen = props => {
                 scrollEnabled={false}
                 columnWrapperStyle={styles.wrapperLikeProducts}
                 renderItem={renderItem}
-                />   
-                {product.length > productPage.length && (
-                  <TouchableOpacity style={styles.button} onPress={handleLoadMore}>
-                    <Text style={styles.text}>Load more</Text>
-                  </TouchableOpacity>
-                )}
+              />
+              {product.length > productPage.length && (
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={handleLoadMore}>
+                  <Text style={styles.text}>Load more</Text>
+                </TouchableOpacity>
+              )}
             </View>
-            <Custom_Footer 
-            onAboutPress={() => props.navigation.navigate('HomeStackScreen', { screen: 'OurStoryScreen' })}
-            onContactPress={() => props.navigation.navigate('HomeStackScreen', { screen: 'ContactUsScreen' })}
-            onBlogPress={() => props.navigation.navigate('BlogStackScreen', { screen: 'BlogGridViewScreen' })}/>
+            <Custom_Footer
+              onAboutPress={() =>
+                props.navigation.navigate('HomeStackScreen', {
+                  screen: 'OurStoryScreen',
+                })
+              }
+              onContactPress={() =>
+                props.navigation.navigate('HomeStackScreen', {
+                  screen: 'ContactUsScreen',
+                })
+              }
+              onBlogPress={() =>
+                props.navigation.navigate('BlogStackScreen', {
+                  screen: 'BlogGridViewScreen',
+                })
+              }
+            />
           </ScrollView>
         </SafeAreaView>
       );
@@ -213,7 +234,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: scale(16),
     color: color.TitleActive,
-    fontFamily: FONT_FAMILY.JoseFinSansRegular,
+    fontFamily: FONT_FAMILY.Regular,
   },
   newTag: {
     backgroundColor: color.AthensGray,

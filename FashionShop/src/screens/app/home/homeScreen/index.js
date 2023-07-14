@@ -21,6 +21,7 @@ import FONT_FAMILY from '../../../../constants/fonts';
 import color from '../../../../constants/color';
 import {IMG_Logo} from '../../../../assets/images';
 import {LineBottom} from '../../../../components/footer/images';
+import Gallery from './components/Gallery';
 
 const HomeScreen = props => {
   const [banners, setBanners] = useState([]);
@@ -81,7 +82,7 @@ const HomeScreen = props => {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       {/* <Custom_Header/> */}
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* Banner */}
         <View style={styles.bannerContainer}>
           <SwiperFlatList
@@ -169,7 +170,8 @@ const HomeScreen = props => {
             style={styles.lineBottom}
             resizeMode="cover"
           />
-          <SwiperFlatList
+          <Gallery product={suggestiveProduct} navigation={props.navigation} />
+          {/* <SwiperFlatList
             showPagination
             paginationStyle={styles.wrapDot}
             paginationStyleItemActive={styles.dotActive}
@@ -193,7 +195,7 @@ const HomeScreen = props => {
                 />
               </View>
             )}
-          />
+          /> */}
         </View>
         {/* Trending */}
         <View style={styles.trendContainer}>
@@ -285,11 +287,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: scale(32),
-    paddingHorizontal: scale(16),
   },
   arrivalText: {
     fontSize: scale(18),
-    lineHeight: scale(40),
     textAlign: 'center',
     fontFamily: FONT_FAMILY.Regular,
     color: color.TitleActive,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: scale(32),
-    paddingHorizontal: scale(16),
+    // paddingHorizontal: scale(16),
   },
   productText: {
     fontSize: scale(18),
