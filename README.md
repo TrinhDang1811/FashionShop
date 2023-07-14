@@ -70,6 +70,9 @@ cd FashionShopAdmin
 ```
 npm install
 ```
+```
+npm install yarn
+```
 4. Change API in constants/api.js by your IP (API will be in this URL of FashionShop Backend https://github.com/KhoiMaiDinh/Fashion_backend)
 
 ## Directory structure
@@ -87,28 +90,24 @@ npm install
     -   **utils**: Các base API của ứng dụng.
 -   **App.js**: Tệp tin gốc của ứng dụng.
 
-## Sử dụng
+## Hướng dẫn
 
-1. Khởi động dự án bằng ứng dụng Expo go trên điện thoại (làm 1 trong 2 bước 1 và 2):
+1. Khởi động dự án bằng ứng dụng Expo trên điện thoại:
 
 ```
 npm start
 ```
 
-sau đó quét Qr để chạy. 2. Khởi động ứng dụng trên iOS Simulator hoặc an Android Virtual Device:
+sau đó quét Qr để chạy. 
+hoặc Khởi động ứng dụng trên Android Emulator hoặc điện thoại Android:
 
 ```
-npm run android
+yarn run android
 ```
 
-hoặc
 
-```
-npm run ios
-```
 
-3. Để có thể đăng nhập vào ứng dụng cần sử dụng Backend tại: https://github.com/LeDuy0806/EzQuizz_server
-
+3. Để có thể đăng nhập vào ứng dụng cần sử dụng Backend tại: (https://github.com/KhoiMaiDinh/Fashion_backend)
 
  
   
