@@ -167,7 +167,7 @@ const ListOfItemScreen = (props) => {
                     <TouchableOpacity style={styles.viewTextLabel} onPress={()=>props.navigation.navigate("AddItem")}>
                       <Text style={styles.textLabel}>Add item</Text>
                     </TouchableOpacity>
-                    <View style={styles.viewSearch}> 
+                    {/* <View style={styles.viewSearch}> 
                           <TextInput style={styles.textInput}
                             placeholder="Search ..."
                             placeholderTextColor={color.AthensGray}
@@ -184,7 +184,7 @@ const ListOfItemScreen = (props) => {
                             <IC_Search stroke = {color.White}/>
                           </View>
 
-                    </View>
+                    </View> */}
               </View>
           </View>
         </View>

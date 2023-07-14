@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
       },
       viewNumber:{
-        width: '5%',
+        width: '6%',
         justifyContent: 'center',
 
       },
