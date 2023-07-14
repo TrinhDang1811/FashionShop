@@ -155,7 +155,7 @@ const AddNewAddressScreen = props => {
       console.log('error', error);
       setVisible(true);
       setTitle('Error');
-      setMessage(err.response.data.error);
+      setMessage(error.response.data.error);
     }
   };
   const handleCityChange = async city => {

@@ -7,30 +7,30 @@ import color from '../../../constants/color'
 import { IC_CompleteOrder, IC_InProcessOrder, IC_NewOrder, IC_ReturnOrCancel, IC_ShippingOrder } from '../../../assets/icons'
 
 const NavBar = (props) => {
-    const {chosen, setChosen, setSubChosen} = props;
+    const {chosen, setChosen, setSubChosen, setMethod} = props;
   return (
     <View style={styles.bottomTabs}>
-        <TouchableOpacity style={chosen=="new"?styles.touchTabChosen:styles.touchTab} onPress={() => {setChosen("new")}}>
+        <TouchableOpacity style={chosen=="new"?styles.touchTabChosen:styles.touchTab} onPress={() => {setChosen("new"), setMethod('Delivery')}}>
             <IC_NewOrder />
             <Text style={chosen=="new"?styles.textTabChosen:styles.textTab}>New</Text>
         </TouchableOpacity >
 
-        <TouchableOpacity style={chosen=="in progress"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("in progress")}}>
+        <TouchableOpacity style={chosen=="in progress"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("in progress"), setMethod('Delivery')}}>
             <IC_InProcessOrder />
             <Text style={chosen=="in progress"?styles.textTabChosen:styles.textTab}>In process</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={chosen=="shipping"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("shipping")}}>
+        <TouchableOpacity style={chosen=="shipping"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("shipping"), setMethod('Delivery')}}>
             <IC_ShippingOrder />
             <Text style={chosen=="shipping"?styles.textTabChosen:styles.textTab}>Shipping/PUS</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={chosen=="complete"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("complete")}}>
+        <TouchableOpacity style={chosen=="complete"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("complete"), setMethod('Delivery')}}>
             <IC_CompleteOrder />
             <Text style={chosen=="complete"?styles.textTabChosen:styles.textTab}>Complete</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={chosen=="return"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("return"); setSubChosen('return')}}>
+        <TouchableOpacity style={chosen=="return"?styles.touchTabChosen:styles.touchTab} onPress={()=>{setChosen("return"); setSubChosen('return'), setMethod('Delivery')}}>
             <IC_ReturnOrCancel />
             <Text style={chosen=="return"?styles.textTabChosen:styles.textTab}>Return/Cancel</Text>
         </TouchableOpacity>

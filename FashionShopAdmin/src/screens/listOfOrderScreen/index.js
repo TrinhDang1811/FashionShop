@@ -21,6 +21,8 @@ const ListOfOrderScreen = (props) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
+  useEffect(() => {console.log({chosen, method, subChosen})}, [chosen, method, subChosen])
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -64,19 +66,19 @@ const ListOfOrderScreen = (props) => {
                 height={3}/>}
       {(chosen==='cancel' || chosen==='return')?(
           <View style={{flexDirection: 'row'}}>
-            <UnderLine text={'Return'} name={'return'} onPress={() => {setSubChosen('return'), setChosen('return')}} chosen={subChosen}/>
-            <UnderLine text={'Canceled'} name={'cancel'} onPress={() => {setSubChosen('cancel'), setChosen('cancel')}} chosen={subChosen}/>
+            <UnderLine text={'Return'} name={'return'} onPress={() => {setMethod('Delivery'), setSubChosen('return'), setChosen('return')}} chosen={subChosen}/>
+            <UnderLine text={'Canceled'} name={'cancel'} onPress={() => {setMethod('Delivery'), setSubChosen('cancel'), setChosen('cancel')}} chosen={subChosen}/>
           </View>
       ):(null)}
       {(chosen==='shipping')?(
           <View style={{flexDirection: 'row'}}>
             <UnderLine text={'Shipping'} name={'Delivery'} onPress={() => {setMethod('Delivery'), setChosen('shipping')}} chosen={method}/>
-            <UnderLine text={'PickUp at store'} name={'PickUp at store'} onPress={() => {setMethod('PickUp at store')}} chosen={method}/>
+            <UnderLine text={'PickUp at store'} name={'PickUp at store'} onPress={() => {setMethod('PickUp at store'), setChosen('shipping')}} chosen={method}/>
           </View>
       ):(null)}
       {method === 'PickUp at store' ? 
       (<ScrollView style={{flex: 1}}>
-        {orders.map((item,index) => (item.orderMethod === 'PickUp at store') && (
+        {orders.map((item,index) => (item.orderMethod === 'PickUp at store' && item.orderStatus === 'shipping') && (
           <TouchableOpacity key={item._id} onPress={() => props.navigation.navigate('OrderDetail', {order: item})}>
             <Order number={index+1} userName={item.userName} orderTime={displayDateTime(item.orderDate)} orderId={item._id} totalPrice={item.orderTotalPrice} userAvatar={item.userAvatar}/>
           </TouchableOpacity>
@@ -89,7 +91,7 @@ const ListOfOrderScreen = (props) => {
           </TouchableOpacity>
         ))}
       </ScrollView>)}
-      <NavBar chosen={chosen} setChosen={setChosen} setSubChosen={setSubChosen}/>
+      <NavBar chosen={chosen} setChosen={setChosen} setSubChosen={setSubChosen} setMethod={setMethod}/>
     </SafeAreaView>
   )
 }

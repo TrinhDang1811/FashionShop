@@ -46,7 +46,6 @@ const ProductDetailsScreen = props => {
   const [availableSize, setAvailableSize] = useState([]);
   const [notExistSize, setNotExistSize] = useState(false);
   const {data} = props.route.params;
-  console.log({data})
 
   const dispatch = useDispatch();
   const addToCartHandler = async () => {
@@ -262,6 +261,9 @@ const ProductDetailsScreen = props => {
                           ? color.Primary
                           : color.TitleActive,
                       borderWidth: 1,
+                      backgroundColor: colorChoose === item.colorId
+                      ? item.colorCode
+                      : color.OffWhite,
                       alignItems: 'center',
                       justifyContent: 'center',
                       width: scale(22),
@@ -273,8 +275,8 @@ const ProductDetailsScreen = props => {
                       style={{
                         borderRadius: 360,
                         backgroundColor: item.colorCode,
-                        width: scale(16),
-                        height: scale(16),
+                        width: scale(15),
+                        height: scale(15),
                       }}
                     />
                   </TouchableOpacity>

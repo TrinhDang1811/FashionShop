@@ -22,7 +22,7 @@ import {
   resetUserWhenLogOut,
   userVerified,
 } from '../../../redux/actions/userActions';
-
+import OKMessageBox from '../../../components/messageBox/OKMessageBox'
 import SaveButton from '../../../components/buttons/Save';
 import scale from '../../../constants/responsive';
 import FONT_FAMILY from '../../../constants/fonts';
@@ -39,6 +39,9 @@ const OTPScreen = props => {
   const [otp2, setOtp2] = useState('');
   const [otp3, setOtp3] = useState('');
   const [otp4, setOtp4] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [title, setTitle] = useState('');
   const logout = useLogout();
   const dispatch = useDispatch();
   const {auth, setAuth} = useAuth();
@@ -84,6 +87,9 @@ const OTPScreen = props => {
     } catch (err) {
       console.log('err', err);
       console.log(JSON.stringify(otp));
+      setVisible(true);
+      setTitle('Error');
+      setErrorMessage(err?.response?.data.error)
     }
   };
 
@@ -91,11 +97,16 @@ const OTPScreen = props => {
     <TouchableWithoutFeedback
       onPress={() => Keyboard.dismiss() && TextInput.clearFocus()}>
       <SafeAreaView style={styles.container}>
+        <OKMessageBox
+          visible={visible}
+          message={errorMessage}
+          clickCancel={() => setVisible(false)}
+          title={title}
+        />
         <View style={styles.header}>
           <TouchableOpacity style={styles.viewIcon} onPress={() => signOut()}>
             <IC_BackwardArrow stroke={color.White} />
           </TouchableOpacity>
-
           <View style={styles.ViewTitleText}>
             <Text style={styles.textTile}>Enter OTP</Text>
             <Text numberOfLines={2} style={styles.textLabel}>
@@ -258,7 +269,7 @@ const styles = StyleSheet.create({
   },
   otpText: {
     fontSize: scale(25),
-    color: color.Black,
+    color: color.TitleActive,
     textAlign: 'center',
   },
   buttonVerification: {
