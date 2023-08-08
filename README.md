@@ -55,7 +55,7 @@ In reality, all customers of a single brand cannot shop at store. Perhaps they a
 1. Clone repository:
 
 ```
-git clone https://github.com/LeDuy0806/EzQuiz-mobile.git
+git clone https://github.com/thanhtheox/FashionShop.git
 ```
 
 2. Move to FashionShop or FashionShopAdmin:
