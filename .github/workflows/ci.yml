@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js 16.14.0
+        uses: actions/setup-node@v3
+        with: 
+              node-version: '16.14.0'
+
+      - name: npm init
+        run: npm init -y
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Install React Native CLI
+        run: npm install -g react-native-cli
+
+      - name: Build project
+        run: npm run build
+      
