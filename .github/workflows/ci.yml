@@ -25,10 +25,7 @@ jobs:
 
       - name: Install React Native CLI
         run: npm install -g react-native-cli
-
-      - name: Build project
-        run: npm run android
-      
+    
       - name: Upload application
         uses: actions/upload-artifact@v2
         with:
