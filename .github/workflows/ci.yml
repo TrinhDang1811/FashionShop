@@ -34,10 +34,5 @@ jobs:
       - name: Install React Native CLI
         run: npm install -g react-native-cli
     
-      - name: Upload application
-        uses: actions/upload-artifact@v2
-        with:
-          name: app
-          path: C:\FashionShop\FashionShop\android
 
 
