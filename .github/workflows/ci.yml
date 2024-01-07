@@ -8,14 +8,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [14.x, 16.x, 18.x]
+
     
     steps:
       - uses: actions/checkout@v3
+      
       - name: Set up Node.js 16.14.0
         uses: actions/setup-node@v3
         with: 
-              node-version: '16.14.0'
+              node-version: ${{matrix.node-version}}
 
       - name: npm init
         run: npm init -y
@@ -31,3 +39,5 @@ jobs:
         with:
           name: app
           path: C:\FashionShop\FashionShop\android
+
+
